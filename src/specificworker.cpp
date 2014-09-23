@@ -36,6 +36,27 @@ SpecificWorker::~SpecificWorker()
 }
 void SpecificWorker::compute( )
 {
+  //laser_proxy es el puntero y tlaserdata es el tipo de dato de laser.
+  TLaserData laserdata = laser_proxy->getLaserData();
+  
+  /*for ( int i = 0; i<laserdata.size(); i++){
+    qDebug() << "Datos LaserData" << laserdata[i].dist << laserdata[i].angle; 
+  }
+  */
+  try{
+    
+    for(auto i: laserdata){
+      //qDebug() << "Datos LaserData" << i.dist << i.angle; 
+      if(i.dist < 100){
+	differentialrobot_proxy->stopBase();
+      }
+    }
+  
+  }catch(const Ice::Exception &e){
+    std::cout<<e<<std::endl;
+  }
+
+  
 }
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
