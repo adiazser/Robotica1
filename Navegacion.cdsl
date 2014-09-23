@@ -1,0 +1,16 @@
+/*
+ * Proceso que se comunica con otros procesos.
+ * Cada uno tendra sus cmake.
+ */
+ 
+ import "/robocomp/interfaces/IDSLs/Laser.idsl";
+ import "/robocomp/interfaces/IDSLs/DifferentialRobot.idsl";
+ 
+ 
+Component NavegacionComp{
+	Communications{
+		requires Laser, DifferentialRobot;
+		
+	};
+	language Cpp;
+};
