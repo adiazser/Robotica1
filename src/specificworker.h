@@ -29,6 +29,18 @@
 class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
+
+enum class STATE {A, C, R, I, IR};
+STATE S;
+QTime T;
+float intervalo;
+
+private:
+	bool chocar();
+	bool rotar();
+	bool avanzar();
+	void iniciar();
+	void iniciarrotar();
 public:
 	SpecificWorker(MapPrx& mprx, QObject *parent = 0);	
 	~SpecificWorker();

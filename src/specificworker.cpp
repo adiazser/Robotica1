@@ -18,6 +18,7 @@
  */
  
  #include "specificworker.h"
+#include <qt4/QtCore/QDate>
 
 /**
 * \brief Default constructor
@@ -25,6 +26,8 @@
 
 SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mprx, parent)	
 {
+  S=STATE::I;
+  T.restart();
 }
 
 /**
@@ -34,30 +37,91 @@ SpecificWorker::~SpecificWorker()
 {
 
 }
+
 void SpecificWorker::compute( )
 {
-  //laser_proxy es el puntero y tlaserdata es el tipo de dato de laser.
-  TLaserData laserdata = laser_proxy->getLaserData();
   
-  /*for ( int i = 0; i<laserdata.size(); i++){
-    qDebug() << "Datos LaserData" << laserdata[i].dist << laserdata[i].angle; 
+  switch(S){
+    case STATE::I:
+        iniciar();
+      break;
+    case STATE::A:
+        avanzar();
+      break;
+    case STATE::C:
+        chocar();
+      break;
+    case STATE::R:
+        rotar();
+      break;
+    case STATE::IR:
+        iniciarrotar();
+      break;
   }
-  */
-  try{
-    
-    for(auto i: laserdata){
-      //qDebug() << "Datos LaserData" << i.dist << i.angle; 
-      if(i.dist < 100){
-	differentialrobot_proxy->stopBase();
-      }
-    }
-  
-  }catch(const Ice::Exception &e){
-    std::cout<<e<<std::endl;
-  }
-
   
 }
+
+bool SpecificWorker::chocar()
+{
+   qDebug()<<__FUNCTION__;
+   //laser_proxy es el puntero y tlaserdata es el tipo de dato de laser.
+   differentialrobot_proxy->stopBase();
+   T.restart();
+   intervalo=qrand()*2200.f/RAND_MAX -1100;
+   S=STATE::IR;
+   
+   return true;
+}
+
+bool SpecificWorker::rotar()
+{
+   
+   qDebug()<<__FUNCTION__;
+   if(T.elapsed()>intervalo){ 
+     differentialrobot_proxy->setSpeedBase(0,0);
+     S=STATE::I;
+   }
+   return true;
+}
+
+void SpecificWorker::iniciarrotar()
+{
+   qDebug()<<__FUNCTION__;
+   differentialrobot_proxy->setSpeedBase(0,1);
+   S=STATE::R;
+}
+
+
+bool SpecificWorker::avanzar()
+{
+
+  qDebug()<<__FUNCTION__;
+  TLaserData laserdata = laser_proxy->getLaserData();
+  
+  try{
+    for(auto i: laserdata){
+      //qDebug() << "Datos LaserData" << i.dist << i.angle; 
+      if(i.dist < 300){
+	S=STATE::C;
+	break;
+      }
+    }
+  }catch(const Ice::Exception &e){
+      std::cout<<e<<std::endl;
+  }
+  return true;
+}
+
+
+void SpecificWorker::iniciar()
+{
+  qDebug()<<__FUNCTION__;
+  differentialrobot_proxy->setSpeedBase(500,0);
+  S=STATE::A;
+}
+
+
+
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
 	timer.start(Period);
