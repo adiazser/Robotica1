@@ -1,3 +1,4 @@
+import "/robocomp/interfaces/IDSLs/AprilTags.idsl";
 /*
  * Proceso que se comunica con otros procesos.
  * Cada uno tendra sus cmake.
@@ -10,6 +11,7 @@
 Component NavegacionComp{
 	Communications{
 		requires Laser, DifferentialRobot;
+		subscribesTo AprilTags;
 		
 	};
 	language Cpp;

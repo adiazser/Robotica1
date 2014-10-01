@@ -27,6 +27,7 @@
 #include <CommonBehavior.h>
 #include <Laser.h>
 #include <DifferentialRobot.h>
+#include <AprilTags.h>
 
 #define CHECK_PERIOD 5000
 #define BASIC_PERIOD 100
@@ -41,6 +42,7 @@ using namespace std;
 */
 using namespace RoboCompLaser;
 using namespace RoboCompDifferentialRobot;
+using namespace RoboCompAprilTags;
 
 class GenericWorker : public QObject
 {
@@ -56,6 +58,8 @@ public:
 
 	LaserPrx laser_proxy;
 	DifferentialRobotPrx differentialrobot_proxy;
+	virtual void  newAprilTag(const tagsList& tags) = 0;
+
 protected:
 	QTimer timer;
 	int Period;

@@ -69,6 +69,8 @@ Laser.h
 -
 DifferentialRobot.h
 -
+AprilTags.h
+-
 
 /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx
 specificworker.h
@@ -80,6 +82,8 @@ QtCore
 QtGui
 -
 Ice/Ice.h
+-
+IceStorm/IceStorm.h
 -
 Ice/Application.h
 -
@@ -99,6 +103,8 @@ specificmonitor.h
 /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.h
 commonbehaviorI.h
 /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/commonbehaviorI.h
+apriltagsI.h
+-
 Laser.h
 -
 DifferentialRobot.h
@@ -3886,6 +3892,38 @@ QtGui/qwidget.h
 QtGui/qwidget.h
 -
 
+src/AprilTags.h
+Ice/ProxyF.h
+-
+Ice/ObjectF.h
+-
+Ice/Exception.h
+-
+Ice/LocalObject.h
+-
+Ice/StreamHelpers.h
+-
+Ice/Proxy.h
+-
+Ice/Object.h
+-
+Ice/Outgoing.h
+-
+Ice/OutgoingAsync.h
+-
+Ice/Incoming.h
+-
+Ice/Direct.h
+-
+IceUtil/ScopedArray.h
+-
+IceUtil/Optional.h
+-
+Ice/StreamF.h
+-
+Ice/UndefSysMacros.h
+-
+
 src/CommonBehavior.h
 Ice/ProxyF.h
 -
@@ -3988,6 +4026,18 @@ DifferentialRobot.h
 Ice/UndefSysMacros.h
 -
 
+src/apriltagsI.h
+QtCore/QObject
+-
+Ice/Ice.h
+-
+AprilTags.h
+-
+config.h
+-
+genericworker.h
+src/genericworker.h
+
 src/config.h
 
 src/genericworker.h
@@ -4004,5 +4054,7 @@ CommonBehavior.h
 Laser.h
 -
 DifferentialRobot.h
+-
+AprilTags.h
 -
 

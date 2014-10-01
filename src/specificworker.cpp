@@ -38,6 +38,7 @@ SpecificWorker::~SpecificWorker()
 
 }
 
+
 void SpecificWorker::compute( )
 {
   
@@ -56,9 +57,43 @@ void SpecificWorker::compute( )
       break;
     case STATE::IR:
         iniciarrotar();
-      break;
+	break;
   }
   
+}
+
+void SpecificWorker::compute2( )
+{
+  
+  switch(S){
+    case STATE::I:
+        iniciar();
+      break;
+    case STATE::A:
+        avanzar();
+      break;
+    case STATE::C:
+        chocar();
+      break;
+    case STATE::R:
+        rotar();
+      break;
+    case STATE::IR:
+        iniciarrotar();
+	break;
+  }
+  
+}
+
+
+///OJO SE EJECUTA EN OTRO HILO
+
+void SpecificWorker::newAprilTag(const tagsList& tags)
+{
+   qDebug()<<__FUNCTION__;
+   for(auto i: tags){
+      qDebug()<< i.id;
+   }
 }
 
 bool SpecificWorker::chocar()
@@ -68,6 +103,13 @@ bool SpecificWorker::chocar()
    differentialrobot_proxy->stopBase();
    T.restart();
    intervalo=qrand()*2200.f/RAND_MAX -1100;
+   if(rotando==false){
+      angulo=qrand()*2.f/RAND_MAX -1;
+      if(angulo>=0)
+	  angulo=1;
+      else
+	  angulo=-1;
+   }
    S=STATE::IR;
    
    return true;
@@ -79,7 +121,7 @@ bool SpecificWorker::rotar()
    qDebug()<<__FUNCTION__;
    if(T.elapsed()>intervalo){ 
      differentialrobot_proxy->setSpeedBase(0,0);
-     S=STATE::I;
+     S=STATE::A;//I
    }
    return true;
 }
@@ -87,10 +129,11 @@ bool SpecificWorker::rotar()
 void SpecificWorker::iniciarrotar()
 {
    qDebug()<<__FUNCTION__;
-   differentialrobot_proxy->setSpeedBase(0,1);
+   differentialrobot_proxy->setSpeedBase(0,angulo);
    S=STATE::R;
+   rotando=true;
+   
 }
-
 
 bool SpecificWorker::avanzar()
 {
@@ -101,9 +144,11 @@ bool SpecificWorker::avanzar()
   try{
     for(auto i: laserdata){
       //qDebug() << "Datos LaserData" << i.dist << i.angle; 
-      if(i.dist < 300){
+      if(i.dist < 500 && i.angle<1.2 && i.angle >-1.2){
 	S=STATE::C;
 	break;
+      }else{
+	S=STATE::I;
       }
     }
   }catch(const Ice::Exception &e){
@@ -118,6 +163,7 @@ void SpecificWorker::iniciar()
   qDebug()<<__FUNCTION__;
   differentialrobot_proxy->setSpeedBase(500,0);
   S=STATE::A;
+  rotando=false;
 }
 
 
