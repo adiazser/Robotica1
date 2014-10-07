@@ -30,11 +30,18 @@ class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 
-enum class STATE {A, C, R, I, IR};
+enum class STATE {A, C, R, I, IR, P};
 STATE S;
 QTime T;
 float intervalo;
-float angulo;
+
+typedef struct m{
+  bool encontrada=false;
+  float x,z,r;
+}marca;
+
+marca m;
+
 bool rotando=false;
 
 private:
@@ -43,6 +50,8 @@ private:
 	bool avanzar();
 	void iniciar();
 	void iniciarrotar();
+	void parar();
+	tagsList tagslocal;
 public:
 	SpecificWorker(MapPrx& mprx, QObject *parent = 0);	
 	~SpecificWorker();

@@ -26,7 +26,7 @@
 
 SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mprx, parent)	
 {
-  S=STATE::I;
+  S=STATE::IR;
   T.restart();
 }
 
@@ -57,12 +57,15 @@ void SpecificWorker::compute( )
       break;
     case STATE::IR:
         iniciarrotar();
-	break;
+      break;
+    case STATE::P:
+        parar();
+      break;
   }
   
 }
 
-void SpecificWorker::compute2( )
+/*void SpecificWorker::compute2( )
 {
   
   switch(S){
@@ -80,24 +83,28 @@ void SpecificWorker::compute2( )
       break;
     case STATE::IR:
         iniciarrotar();
-	break;
+      break;
   }
   
 }
-
+*/
 
 ///OJO SE EJECUTA EN OTRO HILO
 
 void SpecificWorker::newAprilTag(const tagsList& tags)
 {
    qDebug()<<__FUNCTION__;
-   for(auto i: tags){
-      qDebug()<< i.id;
+   tagslocal.clear();
+   tagslocal=tags;
+   for(auto i: tagslocal){
+     i.tx=i.tx*1000.f;
+     i.tz=i.tz*1000.f;
    }
 }
 
 bool SpecificWorker::chocar()
 {
+   float angulo;
    qDebug()<<__FUNCTION__;
    //laser_proxy es el puntero y tlaserdata es el tipo de dato de laser.
    differentialrobot_proxy->stopBase();
@@ -115,25 +122,49 @@ bool SpecificWorker::chocar()
    return true;
 }
 
-bool SpecificWorker::rotar()
+void SpecificWorker::parar()
 {
-   
-   qDebug()<<__FUNCTION__;
-   if(T.elapsed()>intervalo){ 
-     differentialrobot_proxy->setSpeedBase(0,0);
-     S=STATE::A;//I
-   }
-   return true;
+  qDebug()<<__FUNCTION__;
+  differentialrobot_proxy->setSpeedBase(0,0);
 }
+
 
 void SpecificWorker::iniciarrotar()
 {
    qDebug()<<__FUNCTION__;
-   differentialrobot_proxy->setSpeedBase(0,angulo);
-   S=STATE::R;
-   rotando=true;
-   
+   if(T.elapsed()>intervalo){ 
+     differentialrobot_proxy->setSpeedBase(0,1);
+     S=STATE::R;
+   }
 }
+
+bool SpecificWorker::rotar()
+{
+   float angulo, velocidad;
+   qDebug()<<__FUNCTION__;
+   for(auto i: tagslocal){
+     if(i.id==3){
+       qDebug()<< i.tz ;
+       if(i.tz*1000.f<600){
+	 S=STATE::P; 
+	 return true;
+       }
+       // en vez de uno son dos constantes p y q, p para el angulo y q para la velocidad pero no se cuales son.
+       angulo=1.f*i.tx;
+       velocidad=100.f*i.tz;
+  
+       try{
+	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
+      }catch(const Ice::Exception &e){
+	  std::cout<<e<<std::endl;
+      }
+      
+     }
+   }
+      
+  return true;
+}
+
 
 bool SpecificWorker::avanzar()
 {
