@@ -4230,6 +4230,18 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o
  /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
+ /opt/robocomp/include/qmat/QMatAll
+ /opt/robocomp/include/qmat/qcamera.h
+ /opt/robocomp/include/qmat/qessential.h
+ /opt/robocomp/include/qmat/qextrinsics.h
+ /opt/robocomp/include/qmat/qfundamental.h
+ /opt/robocomp/include/qmat/qhomo.h
+ /opt/robocomp/include/qmat/qline2d.h
+ /opt/robocomp/include/qmat/qmat.h
+ /opt/robocomp/include/qmat/qmatrot.h
+ /opt/robocomp/include/qmat/qmovingrobot.h
+ /opt/robocomp/include/qmat/qrtmat.h
+ /opt/robocomp/include/qmat/qvec.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -4665,6 +4677,18 @@ src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/navegacioncomp.cpp
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.h
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
+ /opt/robocomp/include/qmat/QMatAll
+ /opt/robocomp/include/qmat/qcamera.h
+ /opt/robocomp/include/qmat/qessential.h
+ /opt/robocomp/include/qmat/qextrinsics.h
+ /opt/robocomp/include/qmat/qfundamental.h
+ /opt/robocomp/include/qmat/qhomo.h
+ /opt/robocomp/include/qmat/qline2d.h
+ /opt/robocomp/include/qmat/qmat.h
+ /opt/robocomp/include/qmat/qmatrot.h
+ /opt/robocomp/include/qmat/qmovingrobot.h
+ /opt/robocomp/include/qmat/qrtmat.h
+ /opt/robocomp/include/qmat/qvec.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
@@ -5523,6 +5547,18 @@ src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o
  /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
+ /opt/robocomp/include/qmat/QMatAll
+ /opt/robocomp/include/qmat/qcamera.h
+ /opt/robocomp/include/qmat/qessential.h
+ /opt/robocomp/include/qmat/qextrinsics.h
+ /opt/robocomp/include/qmat/qfundamental.h
+ /opt/robocomp/include/qmat/qhomo.h
+ /opt/robocomp/include/qmat/qline2d.h
+ /opt/robocomp/include/qmat/qmat.h
+ /opt/robocomp/include/qmat/qmatrot.h
+ /opt/robocomp/include/qmat/qmovingrobot.h
+ /opt/robocomp/include/qmat/qrtmat.h
+ /opt/robocomp/include/qmat/qvec.h
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate

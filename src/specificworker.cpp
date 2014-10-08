@@ -61,6 +61,9 @@ void SpecificWorker::compute( )
     case STATE::P:
         parar();
       break;
+    case STATE::AM:
+        avanzarMarca();
+      break;
   }
   
 }
@@ -93,13 +96,8 @@ void SpecificWorker::compute( )
 
 void SpecificWorker::newAprilTag(const tagsList& tags)
 {
-   qDebug()<<__FUNCTION__;
-   tagslocal.clear();
-   tagslocal=tags;
-   for(auto i: tagslocal){
-     i.tx=i.tx*1000.f;
-     i.tz=i.tz*1000.f;
-   }
+   //qDebug()<<__FUNCTION__;
+   tagslocal.update(tags);
 }
 
 bool SpecificWorker::chocar()
@@ -122,47 +120,83 @@ bool SpecificWorker::chocar()
    return true;
 }
 
-void SpecificWorker::parar()
-{
-  qDebug()<<__FUNCTION__;
-  differentialrobot_proxy->setSpeedBase(0,0);
-}
-
-
 void SpecificWorker::iniciarrotar()
 {
    qDebug()<<__FUNCTION__;
-   if(T.elapsed()>intervalo){ 
-     differentialrobot_proxy->setSpeedBase(0,1);
-     S=STATE::R;
-   }
+   try
+   {
+      differentialrobot_proxy->setSpeedBase (0, 1);
+      S=STATE::R;
+   } catch ( const Ice::Exception &E )
+     { 
+	std::cout<< E << endl; 
+     }
 }
 
 bool SpecificWorker::rotar()
 {
-   float angulo, velocidad;
-   qDebug()<<__FUNCTION__;
-   for(auto i: tagslocal){
-     if(i.id==3){
-       qDebug()<< i.tz ;
-       if(i.tz*1000.f<600){
+  tag t;
+  if(tagslocal.existsId(3,t))
+  {
+    S=STATE::P;
+    marencontrada=true;
+    return true;
+  }
+  return false;
+}
+
+
+void SpecificWorker::parar()
+{
+  qDebug()<<__FUNCTION__;
+  differentialrobot_proxy->setSpeedBase(0,0);
+  if(marencontrada==true){
+    S=STATE::AM;
+  }
+  
+}
+
+bool SpecificWorker::avanzarMarca()
+{
+  qDebug()<<__FUNCTION__;
+  float angulo, velocidad;
+  tag t;
+  if(tagslocal.existsId(3,t))
+  {
+      qDebug()<< t.tz ;
+      
+      
+      
+      
+      
+      Rot2D m(t.ry);
+      m.print("m");
+      QVec punto(2);
+      punto[0]=0;
+      punto[1]=600;
+      QVec T= QVec::vec2(t.tx, t.tz);
+      QVec r = m*punto + T;
+      r.print("r");
+      //qFatal(".");
+      
+      if(r[1]<0)
+      {
 	 S=STATE::P; 
+	 marencontrada=false;
 	 return true;
        }
-       // en vez de uno son dos constantes p y q, p para el angulo y q para la velocidad pero no se cuales son.
-       angulo=1.f*i.tx;
-       velocidad=100.f*i.tz;
-  
+      
+      
+       angulo=0.001*r[0];
+       if (angulo>0.8)
+	 angulo=0.8;
+       velocidad=0.5*r[1];
+       if(velocidad>500)
+	 velocidad=500;
        try{
 	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
-      }catch(const Ice::Exception &e){
-	  std::cout<<e<<std::endl;
-      }
-      
-     }
-   }
-      
-  return true;
+      }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
+  }
 }
 
 

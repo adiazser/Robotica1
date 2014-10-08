@@ -20,6 +20,7 @@
 #define SPECIFICWORKER_H
 
 #include <genericworker.h>
+#include <qmat/QMatAll>
 
 /**
        \brief
@@ -30,19 +31,55 @@ class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 
-enum class STATE {A, C, R, I, IR, P};
+enum class STATE {A, C, R, I, IR, P, AM};
 STATE S;
 QTime T;
 float intervalo;
-
-typedef struct m{
-  bool encontrada=false;
-  float x,z,r;
-}marca;
-
-marca m;
-
 bool rotando=false;
+bool marencontrada=false;
+
+struct tag
+{
+  int id;
+  float tx,tz,ry;	
+  tag(){};
+    tag( int id_, float tx_, float tz_, float ry_)
+  {
+      tx = tx_*1000; tz = tz_*1000; ry = ry_; id = id_;
+  }
+};
+
+struct tagslocalT
+{
+  QMutex mutex;
+  void update( const tagsList &t)
+  {
+    QMutexLocker m(&mutex);
+    tags.clear();
+    for(auto i: t)
+    {
+      tag myT(i.id, i.tx, i.tz, i.ry);
+      tags.push_back(myT);
+    }
+    
+  }
+
+  bool existsId(int id_, tag &tt)
+  {
+    QMutexLocker m(&mutex);
+    for(auto i: tags)
+      if( i.id == id_)
+      {
+	tt=i;
+	return true;
+      }
+    return false;
+  }
+  std::vector<tag> tags;
+};
+
+tagslocalT tagslocal;
+
 
 private:
 	bool chocar();
@@ -51,7 +88,7 @@ private:
 	void iniciar();
 	void iniciarrotar();
 	void parar();
-	tagsList tagslocal;
+	bool avanzarMarca();
 public:
 	SpecificWorker(MapPrx& mprx, QObject *parent = 0);	
 	~SpecificWorker();
