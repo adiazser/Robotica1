@@ -163,34 +163,36 @@ bool SpecificWorker::avanzarMarca()
   tag t;
   if(tagslocal.existsId(3,t))
   {
-      qDebug()<< t.tz ;
-      
-      
-      
-      
-      
+      //qDebug()<< t.tz ;
       Rot2D m(t.ry);
-      m.print("m");
+      Rot2DC mt(t.ry);
+      //m.print("m");
       QVec punto(2);
       punto[0]=0;
-      punto[1]=600;
+      punto[1]=500;
       QVec T= QVec::vec2(t.tx, t.tz);
-      QVec r = m*punto + T;
-      r.print("r");
-      //qFatal(".");
+      //QVec f = m*punto + T; 
+      //QVec f = mt*(punto-T);
+      //QVec f = mt*(-(punto-T));
+      QVec f = m*(-(punto-T));
+      f.print("f");
       
-      if(r[1]<0)
+      /*
+       * r[0] es la variable de giro el angulo
+       * r[1] es la distancia a la pared
+       */ 
+      //if(f[0]<0.001 && t.tz<600)
+      if(-0.05>f[0] && f[0]<0.05 && f[1]<-0.5 && f[1]<0.5)
       {
-	 S=STATE::P; 
+	 S=STATE::P;
 	 marencontrada=false;
 	 return true;
-       }
-      
-      
-       angulo=0.001*r[0];
+      }
+       
+       angulo=0.001*f[0];
        if (angulo>0.8)
 	 angulo=0.8;
-       velocidad=0.5*r[1];
+       velocidad=0.5*f[1];
        if(velocidad>500)
 	 velocidad=500;
        try{
