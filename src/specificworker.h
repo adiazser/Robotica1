@@ -37,6 +37,9 @@ QTime T;
 float intervalo;
 bool rotando=false;
 bool marencontrada=false;
+bool puntoencontrado=false;
+QVec marca;
+TBaseState basestate;
 
 struct tag
 {

@@ -41,7 +41,8 @@ SpecificWorker::~SpecificWorker()
 
 void SpecificWorker::compute( )
 {
-  
+  differentialrobot_proxy->getBaseState(basestate);
+  //qDebug()<< basestate.x << basestate.z;
   switch(S){
     case STATE::I:
         iniciar();
@@ -161,44 +162,69 @@ bool SpecificWorker::avanzarMarca()
   qDebug()<<__FUNCTION__;
   float angulo, velocidad;
   tag t;
-  if(tagslocal.existsId(3,t))
+  if(tagslocal.existsId(3,t) && puntoencontrado==false)
   {
-      //qDebug()<< t.tz ;
       Rot2D m(t.ry);
       Rot2DC mt(t.ry);
-      //m.print("m");
       QVec punto(2);
       punto[0]=0;
       punto[1]=500;
       QVec T= QVec::vec2(t.tx, t.tz);
-      //QVec f = m*punto + T; 
-      //QVec f = mt*(punto-T);
-      //QVec f = mt*(-(punto-T));
       QVec f = m*(-(punto-T));
       f.print("f");
-      
+      puntoencontrado=true;
+      marca=f;
       /*
        * r[0] es la variable de giro el angulo
        * r[1] es la distancia a la pared
-       */ 
-      //if(f[0]<0.001 && t.tz<600)
-      if(-0.05>f[0] && f[0]<0.05 && f[1]<-0.5 && f[1]<0.5)
-      {
-	 S=STATE::P;
-	 marencontrada=false;
-	 return true;
-      }
-       
+       */   
        angulo=0.001*f[0];
        if (angulo>0.8)
 	 angulo=0.8;
        velocidad=0.5*f[1];
        if(velocidad>500)
 	 velocidad=500;
+      if( f[1]>-1 && f[1]<1)
+      {
+	    S=STATE::P;
+	    marencontrada=false;
+	    return true;
+      }
+	   
        try{
 	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
       }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
   }
+  
+  else if(puntoencontrado==true){
+    //mundo 
+    Rot2DC m(basestate.alpha);
+    QVec punto(2);
+    punto[0]=marca[0];
+    punto[1]=marca[1];
+    QVec T= QVec::vec2(basestate.x, basestate.z);
+    QVec f = m*((punto-T));
+    marca.print("marca");
+    f.print("f");
+    
+    angulo=0.001*marca[0];
+    if (angulo>0.8)
+      angulo=0.8;
+    velocidad=0.5*marca[1];
+    if(velocidad>500)
+      velocidad=500;
+    
+    if(f[1]>-1 && f[1]<1)
+    {
+      S=STATE::P;
+      return true;
+     }
+     try{
+	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
+      }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
+     
+  }
+  
 }
 
 
