@@ -4229,6 +4229,7 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/Laser.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /home/salabeta/robocomp/classes/qlog/qlog.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: src/moc_specificworker.cxx
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: src/specificworker.h
+src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /opt/robocomp/include/innermodel/innermodel.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /opt/robocomp/include/qmat/QMatAll
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /opt/robocomp/include/qmat/qcamera.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /opt/robocomp/include/qmat/qessential.h
@@ -4244,7 +4245,9 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /opt/robocomp/includ
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/Qt3Support/q3cstring.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/Qt3Support/q3valuelist.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtCore/QDate
+src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtCore/QHash
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtCore/QList
+src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtCore/QMutexLocker
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtCore/QObject
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtCore/QPoint
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: /usr/include/qt4/QtCore/QPointF
@@ -4676,6 +4679,7 @@ src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/navegacioncomp.cpp
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/specificmonitor.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/specificworker.h
+src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /opt/robocomp/include/innermodel/innermodel.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /opt/robocomp/include/qmat/QMatAll
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /opt/robocomp/include/qmat/qcamera.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /opt/robocomp/include/qmat/qessential.h
@@ -4691,7 +4695,9 @@ src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /opt/robocomp/include/qm
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/Qt3Support/q3cstring.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/Qt3Support/q3valuelist.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/QtCore/QDate
+src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/QtCore/QHash
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/QtCore/QList
+src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/QtCore/QMutexLocker
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/QtCore/QObject
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/QtCore/QPoint
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: /usr/include/qt4/QtCore/QPointF
@@ -5546,6 +5552,7 @@ src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/Laser.h
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /home/salabeta/robocomp/classes/qlog/qlog.h
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: src/specificworker.cpp
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: src/specificworker.h
+src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /opt/robocomp/include/innermodel/innermodel.h
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /opt/robocomp/include/qmat/QMatAll
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /opt/robocomp/include/qmat/qcamera.h
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /opt/robocomp/include/qmat/qessential.h
@@ -5561,7 +5568,9 @@ src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /opt/robocomp/include/qm
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/Qt3Support/q3cstring.h
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/Qt3Support/q3valuelist.h
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/QtCore/QDate
+src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/QtCore/QHash
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/QtCore/QList
+src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/QtCore/QMutexLocker
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/QtCore/QObject
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/QtCore/QPoint
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: /usr/include/qt4/QtCore/QPointF

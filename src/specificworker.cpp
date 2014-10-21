@@ -27,6 +27,7 @@
 SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mprx, parent)	
 {
   S=STATE::IR;
+  inner = new InnerModel("/home/salabeta/robocomp/files/innermodel/betaWorld2.xml");
   T.restart();
 }
 
@@ -41,8 +42,13 @@ SpecificWorker::~SpecificWorker()
 
 void SpecificWorker::compute( )
 {
-  differentialrobot_proxy->getBaseState(basestate);
-  //qDebug()<< basestate.x << basestate.z;
+  try{
+    differentialrobot_proxy->getBaseState(basestate);
+  }
+  catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
+  inner->updateTransformValues("base", basestate.x,0,basestate.z, 0, -basestate.alpha,0);
+  
+  qDebug()<< "BASESTATE" << basestate.x << basestate.z;
   switch(S){
     case STATE::I:
         iniciar();
@@ -162,22 +168,99 @@ bool SpecificWorker::avanzarMarca()
   qDebug()<<__FUNCTION__;
   float angulo, velocidad;
   tag t;
-  if(tagslocal.existsId(3,t) && puntoencontrado==false)
+  static QVec memory=QVec::zeros(3);
+  QVec r2(3);
+  QVec imagine;
+  
+  if(tagslocal.existsId(3,t) )
   {
-      Rot2D m(t.ry);
+      QVec punto(2);
+      punto[0]=0;
+      punto[1]=500;
+      memory = inner->transform("world", QVec::vec3(t.tx,0,t.tz), "camera");
+      memory.print("memory");
+      qDebug()<< "TZ" << t.tz;
+      imagine=QVec::vec3(t.tx,0,t.tz);      
+   }   
+    else
+    {
+      imagine = inner->transform("base", memory, "world");
+      imagine.print("imagine");
+     }
+  
+      angulo=0.001*imagine.x();
+      if (angulo>0.7)
+	angulo=0.7;
+      if (angulo < -0.7)
+	angulo=-0.7;
+      velocidad=0.5*imagine.z();
+      if(velocidad>300){
+	velocidad=300;
+      if (angulo>0.7)
+	angulo=0.7;
+      if (angulo < -0.7)
+	angulo=-0.7;
+      }
+    
+      if(imagine.z() < 350)
+      {
+	S=STATE::P;
+	marencontrada=false;
+	return true;
+      } try{
+	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
+    }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;   } 
+
+    return true;
+ }
+      //Qvec r = inner->transform("world", QVec::vec3(t.tx,0,t.tz), "camerargbd");
+    
+      /*Rot2D m(t.ry);
       Rot2DC mt(t.ry);
       QVec punto(2);
       punto[0]=0;
       punto[1]=500;
       QVec T= QVec::vec2(t.tx, t.tz);
       QVec f = m*(-(punto-T));
-      f.print("f");
+   //   f.print("f");
       puntoencontrado=true;
       marca=f;
-      /*
+      Rot2D mm(-basestate.alpha);
+      qDebug()<<basestate.alpha;
+      QVec puntom(2);
+      puntom[0]=marca[0];
+      puntom[1]=marca[1];
+      QVec Tm= QVec::vec2(basestate.x, basestate.z);
+      prm = mm*puntom + Tm;
+      
+     // Rot2D m2(-basestate.alpha);
+    //  qDebug()<<basestate.alpha;
+    //  QVec punto(2);
+    //  QVec T2= QVec::vec2(basestate.x, basestate.z);
+      QVec f2 = mm*prm + Tm;
+    //QVec f= m*(punto-T);
+      prm.print("prm: ");
+      f2.print("resultado f");
+    
+      angulo=0.001*f2[0];
+      if (angulo>0.8)
+	angulo=0.8;
+      if (angulo < -0.8)
+	angulo=-0.8;
+      velocidad=0.5*f2[1];
+      if(velocidad>500)
+	velocidad=500;
+    
+      if(f2[1]>-80 && f2[1]<80)
+      {
+	S=STATE::P;
+	return true;
+      } try{
+	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
+    }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
+      
        * r[0] es la variable de giro el angulo
-       * r[1] es la distancia a la pared
-       */   
+       * r[1] es la distancia a la pared 
        angulo=0.001*f[0];
        if (angulo>0.8)
 	 angulo=0.8;
@@ -190,42 +273,43 @@ bool SpecificWorker::avanzarMarca()
 	    marencontrada=false;
 	    return true;
       }
-	   
+      
        try{
 	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
       }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
+      
   }
   
-  else if(puntoencontrado==true){
+  else{
     //mundo 
-    Rot2DC m(basestate.alpha);
+    Rot2D m(-basestate.alpha);
+    qDebug()<<basestate.alpha;
     QVec punto(2);
-    punto[0]=marca[0];
-    punto[1]=marca[1];
+    punto[0]=prm[0];
+    punto[1]=prm[1];
     QVec T= QVec::vec2(basestate.x, basestate.z);
-    QVec f = m*((punto-T));
-    marca.print("marca");
-    f.print("f");
+    QVec f = m*punto - T;
+    //QVec f= m*(punto-T);
+    prm.print("prm: ");
+    f.print("resultado f");
     
-    angulo=0.001*marca[0];
+    angulo=0.001*f[0];
     if (angulo>0.8)
       angulo=0.8;
-    velocidad=0.5*marca[1];
+    velocidad=0.5*f[1];
     if(velocidad>500)
-      velocidad=500;
+      velocidad=300;
     
-    if(f[1]>-1 && f[1]<1)
+    if(f[1]>-100 && f[1]<100)
     {
       S=STATE::P;
       return true;
      }
-     try{
+    try{
 	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
-      }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
-     
-  }
-  
-}
+    }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
+    
+    */
 
 
 bool SpecificWorker::avanzar()

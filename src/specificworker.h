@@ -21,6 +21,7 @@
 
 #include <genericworker.h>
 #include <qmat/QMatAll>
+#include <innermodel/innermodel.h>
 
 /**
        \brief
@@ -39,7 +40,9 @@ bool rotando=false;
 bool marencontrada=false;
 bool puntoencontrado=false;
 QVec marca;
+QVec prm;
 TBaseState basestate;
+InnerModel *inner;
 
 struct tag
 {

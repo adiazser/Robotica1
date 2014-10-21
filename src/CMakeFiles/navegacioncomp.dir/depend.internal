@@ -4230,6 +4230,7 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o
  /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
+ /opt/robocomp/include/innermodel/innermodel.h
  /opt/robocomp/include/qmat/QMatAll
  /opt/robocomp/include/qmat/qcamera.h
  /opt/robocomp/include/qmat/qessential.h
@@ -4245,7 +4246,9 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
+ /usr/include/qt4/QtCore/QHash
  /usr/include/qt4/QtCore/QList
+ /usr/include/qt4/QtCore/QMutexLocker
  /usr/include/qt4/QtCore/QObject
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
@@ -4677,6 +4680,7 @@ src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/navegacioncomp.cpp
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.h
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
+ /opt/robocomp/include/innermodel/innermodel.h
  /opt/robocomp/include/qmat/QMatAll
  /opt/robocomp/include/qmat/qcamera.h
  /opt/robocomp/include/qmat/qessential.h
@@ -4692,7 +4696,9 @@ src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
+ /usr/include/qt4/QtCore/QHash
  /usr/include/qt4/QtCore/QList
+ /usr/include/qt4/QtCore/QMutexLocker
  /usr/include/qt4/QtCore/QObject
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
@@ -5547,6 +5553,7 @@ src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o
  /home/salabeta/robocomp/classes/qlog/qlog.h
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp
  /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
+ /opt/robocomp/include/innermodel/innermodel.h
  /opt/robocomp/include/qmat/QMatAll
  /opt/robocomp/include/qmat/qcamera.h
  /opt/robocomp/include/qmat/qessential.h
@@ -5562,7 +5569,9 @@ src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o
  /usr/include/qt4/Qt3Support/q3cstring.h
  /usr/include/qt4/Qt3Support/q3valuelist.h
  /usr/include/qt4/QtCore/QDate
+ /usr/include/qt4/QtCore/QHash
  /usr/include/qt4/QtCore/QList
+ /usr/include/qt4/QtCore/QMutexLocker
  /usr/include/qt4/QtCore/QObject
  /usr/include/qt4/QtCore/QPoint
  /usr/include/qt4/QtCore/QPointF
