@@ -46,7 +46,7 @@ void SpecificWorker::compute( )
     differentialrobot_proxy->getBaseState(basestate);
   }
   catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
-  inner->updateTransformValues("base", basestate.x,0,basestate.z, 0, -basestate.alpha,0);
+  inner->updateTransformValues("base", basestate.x,0,basestate.z, 0, basestate.alpha,0);
   
   qDebug()<< "BASESTATE" << basestate.x << basestate.z;
   switch(S){
@@ -74,6 +74,8 @@ void SpecificWorker::compute( )
   }
   
 }
+
+
 
 /*void SpecificWorker::compute2( )
 {
@@ -168,24 +170,29 @@ bool SpecificWorker::avanzarMarca()
   qDebug()<<__FUNCTION__;
   float angulo, velocidad;
   tag t;
+ TLaserData laserdata = laser_proxy->getLaserData();
   static QVec memory=QVec::zeros(3);
   QVec r2(3);
   QVec imagine;
   
   if(tagslocal.existsId(3,t) )
   {
-      QVec punto(2);
+      QVec punto(3);
       punto[0]=0;
-      punto[1]=500;
-      memory = inner->transform("world", QVec::vec3(t.tx,0,t.tz), "camera");
+      punto[1]=0;
+      punto[2]=500;
+      //memory = inner->transform("world", QVec::vec3(t.tx,0,t.tz), "camera");
+      memory = inner->transform("world", punto, "target03");
       memory.print("memory");
       qDebug()<< "TZ" << t.tz;
-      imagine=QVec::vec3(t.tx,0,t.tz);      
+      //imagine=QVec::vec3(t.tx,0,t.tz);
+      imagine= inner->transform("camera", punto, "target03");
+      imagine.print("imagine if");
    }   
     else
     {
-      imagine = inner->transform("base", memory, "world");
-      imagine.print("imagine");
+      imagine = inner->transform("camera", memory, "world");
+      imagine.print("imagine else");
      }
   
       angulo=0.001*imagine.x();
@@ -201,8 +208,9 @@ bool SpecificWorker::avanzarMarca()
       if (angulo < -0.7)
 	angulo=-0.7;
       }
-    
-      if(imagine.z() < 350)
+
+     // if((imagine.x() > -1 && imagine.x() < 1) || imagine.z()<350)
+     if (imagine.z() < 10)
       {
 	S=STATE::P;
 	marencontrada=false;
