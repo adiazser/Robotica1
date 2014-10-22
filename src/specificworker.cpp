@@ -53,8 +53,8 @@ void SpecificWorker::compute( )
     case STATE::I:
         iniciar();
       break;
-    case STATE::A:
-        avanzar();
+    case STATE::FR:
+        fuerzasRepulsion();
       break;
     case STATE::C:
         chocar();
@@ -111,18 +111,18 @@ void SpecificWorker::newAprilTag(const tagsList& tags)
 
 bool SpecificWorker::chocar()
 {
-   float angulo;
+   
    qDebug()<<__FUNCTION__;
    //laser_proxy es el puntero y tlaserdata es el tipo de dato de laser.
    differentialrobot_proxy->stopBase();
    T.restart();
    intervalo=qrand()*2200.f/RAND_MAX -1100;
    if(rotando==false){
-      angulo=qrand()*2.f/RAND_MAX -1;
-      if(angulo>=0)
-	  angulo=1;
+      angulochoque=qrand()*2.f/RAND_MAX -1;
+      if(angulochoque>=0)
+	  angulochoque=1;
       else
-	  angulo=-1;
+	  angulochoque=-1;
    }
    S=STATE::IR;
    
@@ -168,9 +168,9 @@ void SpecificWorker::parar()
 bool SpecificWorker::avanzarMarca()
 {
   qDebug()<<__FUNCTION__;
-  float angulo, velocidad;
+  //float angulo, velocidad;
   tag t;
- TLaserData laserdata = laser_proxy->getLaserData();
+  TLaserData laserdata = laser_proxy->getLaserData();
   static QVec memory=QVec::zeros(3);
   QVec r2(3);
   QVec imagine;
@@ -187,40 +187,107 @@ bool SpecificWorker::avanzarMarca()
       qDebug()<< "TZ" << t.tz;
       //imagine=QVec::vec3(t.tx,0,t.tz);
       imagine= inner->transform("camera", punto, "target03");
-      imagine.print("imagine if");
+      imagine.print("imagine IF");
    }   
     else
     {
+      memory.print("memory ELSE");
       imagine = inner->transform("camera", memory, "world");
-      imagine.print("imagine else");
+      imagine.print("imagine ELSE");
      }
   
-      angulo=0.001*imagine.x();
-      if (angulo>0.7)
+      QVec fuerzas = fuerzasRepulsion();
+      QVec resultante = fuerzas + QVec::vec2(imagine.x(),imagine.z());
+      
+      controlador(resultante, imagine);
+     
+    
+    return true;
+ }
+ 
+void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
+{
+      qDebug()<<__FUNCTION__;
+      
+      float angulo = atan2(resultante.x(),resultante.y());
+      qDebug()<<"resultanteX" << resultante;
+  /*    if (angulo>0.7)
 	angulo=0.7;
       if (angulo < -0.7)
-	angulo=-0.7;
-      velocidad=0.5*imagine.z();
-      if(velocidad>300){
+	angulo=-0.7;*/
+      float velocidad=0.1*resultante.norm2();
+      /*if(velocidad>300){
 	velocidad=300;
       if (angulo>0.7)
 	angulo=0.7;
       if (angulo < -0.7)
 	angulo=-0.7;
       }
-
-     // if((imagine.x() > -1 && imagine.x() < 1) || imagine.z()<350)
-     if (imagine.z() < 10)
+     */
+     if (target.norm2() < 10)
       {
 	S=STATE::P;
 	marencontrada=false;
-	return true;
-      } try{
-	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
-    }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;   } 
+      } 
+      
+//       try{
+// 	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
+//       }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;   } 
 
-    return true;
- }
+}
+ 
+QVec SpecificWorker::fuerzasRepulsion()
+{
+
+  qDebug()<<__FUNCTION__;
+  TLaserData laserdata = laser_proxy->getLaserData();
+  QVec fuerza;
+  QVec expulsion = QVec::zeros(2);
+  try{
+    
+    for(auto i: laserdata)
+    {
+      //qDebug() << "Datos LaserData" << i.dist << i.angle; 
+     /* if(i.dist < 500 && i.angle<1.2 && i.angle >-1.2){
+	S=STATE::C;
+	break;
+      }else{
+	S=STATE::I;
+      }*/
+      if (i.angle>-1.2 and i.angle< 1.2)
+      {
+	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
+	float mod = fuerza.norm2();
+	expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
+	qDebug() << "angle" << i.angle << "dist" << i.dist << expulsion << fuerza.normalize() * (float)(1.0/(mod)) << fuerza;
+      }
+    }
+    qDebug() << "repuls" << expulsion*100000;
+    
+  }catch(const Ice::Exception &e){
+      std::cout<<e<<std::endl;
+  }
+  return expulsion*100000;
+}
+
+
+void SpecificWorker::iniciar()
+{
+  qDebug()<<__FUNCTION__;
+  differentialrobot_proxy->setSpeedBase(500,0);
+  S=STATE::FR;
+  rotando=false;
+}
+
+
+
+
+bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
+{
+	timer.start(Period);
+	return true;
+};
+ 
       //Qvec r = inner->transform("world", QVec::vec3(t.tx,0,t.tz), "camerargbd");
     
       /*Rot2D m(t.ry);
@@ -320,41 +387,3 @@ bool SpecificWorker::avanzarMarca()
     */
 
 
-bool SpecificWorker::avanzar()
-{
-
-  qDebug()<<__FUNCTION__;
-  TLaserData laserdata = laser_proxy->getLaserData();
-  
-  try{
-    for(auto i: laserdata){
-      //qDebug() << "Datos LaserData" << i.dist << i.angle; 
-      if(i.dist < 500 && i.angle<1.2 && i.angle >-1.2){
-	S=STATE::C;
-	break;
-      }else{
-	S=STATE::I;
-      }
-    }
-  }catch(const Ice::Exception &e){
-      std::cout<<e<<std::endl;
-  }
-  return true;
-}
-
-
-void SpecificWorker::iniciar()
-{
-  qDebug()<<__FUNCTION__;
-  differentialrobot_proxy->setSpeedBase(500,0);
-  S=STATE::A;
-  rotando=false;
-}
-
-
-
-bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
-{
-	timer.start(Period);
-	return true;
-};

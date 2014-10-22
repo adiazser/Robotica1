@@ -32,7 +32,7 @@ class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 
-enum class STATE {A, C, R, I, IR, P, AM};
+enum class STATE {FR, C, R, I, IR, P, AM};
 STATE S;
 QTime T;
 float intervalo;
@@ -43,6 +43,8 @@ QVec marca;
 QVec prm;
 TBaseState basestate;
 InnerModel *inner;
+float angulochoque;
+
 
 struct tag
 {
@@ -90,11 +92,12 @@ tagslocalT tagslocal;
 private:
 	bool chocar();
 	bool rotar();
-	bool avanzar();
+	QVec fuerzasRepulsion();
 	void iniciar();
 	void iniciarrotar();
 	void parar();
 	bool avanzarMarca();
+	void controlador(const QVec& resultante, const QVec& target);
 public:
 	SpecificWorker(MapPrx& mprx, QObject *parent = 0);	
 	~SpecificWorker();
