@@ -210,12 +210,19 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
       qDebug()<<__FUNCTION__;
       
       float angulo = atan2(resultante.x(),resultante.y());
+      if (angulo>0.7){
+	angulo=0.7;
+      }else if (angulo< -0.7)
+	angulo =-0.7;
       qDebug()<<"resultanteX" << resultante;
   /*    if (angulo>0.7)
 	angulo=0.7;
       if (angulo < -0.7)
 	angulo=-0.7;*/
-      float velocidad=0.1*resultante.norm2();
+      float velocidad=0.2*resultante.norm2();
+      if(velocidad <50){
+	  velocidad=50;
+      }
       /*if(velocidad>300){
 	velocidad=300;
       if (angulo>0.7)
@@ -224,15 +231,15 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
 	angulo=-0.7;
       }
      */
-     if (target.norm2() < 10)
+     if (target.z() < 50)
       {
 	S=STATE::P;
 	marencontrada=false;
       } 
       
-//       try{
-// 	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
-//       }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;   } 
+       try{
+ 	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
+       }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;   } 
 
 }
  
@@ -254,15 +261,15 @@ QVec SpecificWorker::fuerzasRepulsion()
       }else{
 	S=STATE::I;
       }*/
-      if (i.angle>-1.2 and i.angle< 1.2)
+      if (i.angle>-1.5 and i.angle< 1.5)
       {
 	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
 	float mod = fuerza.norm2();
-	expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
-	qDebug() << "angle" << i.angle << "dist" << i.dist << expulsion << fuerza.normalize() * (float)(1.0/(mod)) << fuerza;
+	expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(4*mod))); 
+	//qDebug() << "angle" << i.angle << "dist" << i.dist << expulsion << fuerza.normalize() * (float)(1.0/(mod)) << fuerza;
       }
     }
-    qDebug() << "repuls" << expulsion*100000;
+    //qDebug() << "repuls" << expulsion*100000;
     
   }catch(const Ice::Exception &e){
       std::cout<<e<<std::endl;
