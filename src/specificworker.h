@@ -39,6 +39,7 @@ float intervalo;
 bool rotando=false;
 bool marencontrada=false;
 bool puntoencontrado=false;
+bool enmarca=false;
 QVec marca;
 QVec prm;
 TBaseState basestate;
@@ -49,12 +50,19 @@ float angulochoque;
 struct tag
 {
   int id;
-  float tx,tz,ry;	
+  float tx,ty,tz,ry;	
   tag(){};
-    tag( int id_, float tx_, float tz_, float ry_)
+    tag( int id_, float tx_, float ty_, float tz_, float ry_)
   {
-      tx = tx_*1000; tz = tz_*1000; ry = ry_; id = id_;
+      tx = tx_*1000; ty = ty_*1000; tz = tz_*1000; ry = ry_; id = id_;
+      pose.resize(6);
+      pose[0] = tx;     pose[1] = ty;     pose[2] = tz;     pose[3] = 0;     pose[4] = ry;     pose[5] = 0;
   }
+  QVec getPose()
+  {
+    return pose;
+  }
+  QVec pose;
 };
 
 struct tagslocalT
@@ -66,7 +74,7 @@ struct tagslocalT
     tags.clear();
     for(auto i: t)
     {
-      tag myT(i.id, i.tx, i.tz, i.ry);
+      tag myT(i.id, i.tx, i.ty, i.tz, i.ry);
       tags.push_back(myT);
     }
     
@@ -98,6 +106,8 @@ private:
 	void parar();
 	bool avanzarMarca();
 	void controlador(const QVec& resultante, const QVec& target);
+	void addTransformInnerModel(const QString &name, const QString &parent, const QVec &pose6D);
+	
 public:
 	SpecificWorker(MapPrx& mprx, QObject *parent = 0);	
 	~SpecificWorker();

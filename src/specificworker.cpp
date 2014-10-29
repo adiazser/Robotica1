@@ -48,7 +48,6 @@ void SpecificWorker::compute( )
   catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
   inner->updateTransformValues("base", basestate.x,0,basestate.z, 0, basestate.alpha,0);
   
-  qDebug()<< "BASESTATE" << basestate.x << basestate.z;
   switch(S){
     case STATE::I:
         iniciar();
@@ -168,7 +167,6 @@ void SpecificWorker::parar()
 bool SpecificWorker::avanzarMarca()
 {
   qDebug()<<__FUNCTION__;
-  //float angulo, velocidad;
   tag t;
   TLaserData laserdata = laser_proxy->getLaserData();
   static QVec memory=QVec::zeros(3);
@@ -180,24 +178,23 @@ bool SpecificWorker::avanzarMarca()
       QVec punto(3);
       punto[0]=0;
       punto[1]=0;
-      punto[2]=500;
-      //memory = inner->transform("world", QVec::vec3(t.tx,0,t.tz), "camera");
-      memory = inner->transform("world", punto, "target03");
-      memory.print("memory");
-      qDebug()<< "TZ" << t.tz;
-      //imagine=QVec::vec3(t.tx,0,t.tz);
-      imagine= inner->transform("camera", punto, "target03");
-      imagine.print("imagine IF");
-   }   
+      punto[2]=-500;
+      
+      addTransformInnerModel("marca-desde-camara", "camera", t.getPose());
+      memory = inner->transform("world", punto, "marca-desde-camara");
+      imagine= inner->transform("camera", punto, "marca-desde-camara");
+      imagine.print("PUNTO VISTO DESDE LA CAMARA IF");
+    }   
     else
     {
-      memory.print("memory ELSE");
       imagine = inner->transform("camera", memory, "world");
-      imagine.print("imagine ELSE");
+      imagine.print("PUNTO VISTO DESDE LA CAMARA ELSE");
      }
-  
+     
+     
       QVec fuerzas = fuerzasRepulsion();
       QVec resultante = fuerzas + QVec::vec2(imagine.x(),imagine.z());
+      
       
       controlador(resultante, imagine);
      
@@ -214,27 +211,17 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
 	angulo=0.7;
       }else if (angulo< -0.7)
 	angulo =-0.7;
-      qDebug()<<"resultanteX" << resultante;
-  /*    if (angulo>0.7)
-	angulo=0.7;
-      if (angulo < -0.7)
-	angulo=-0.7;*/
+      
       float velocidad=0.2*resultante.norm2();
       if(velocidad <50){
 	  velocidad=50;
       }
-      /*if(velocidad>300){
-	velocidad=300;
-      if (angulo>0.7)
-	angulo=0.7;
-      if (angulo < -0.7)
-	angulo=-0.7;
-      }
-     */
-     if (target.z() < 50)
+      
+     if (target.z() < 200)
       {
 	S=STATE::P;
 	marencontrada=false;
+	enmarca=true;
       } 
       
        try{
@@ -242,6 +229,19 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
        }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;   } 
 
 }
+
+
+void SpecificWorker::addTransformInnerModel(const QString &name, const QString &parent, const QVec &pose6D)
+{
+		InnerModelNode *nodeParent = inner->getNode(parent);
+		if( inner->getNode(name) == NULL)
+		{
+			InnerModelTransform *node = inner->newTransform(name, "static", nodeParent, 0, 0, 0, 0, 0, 0, 0);
+			nodeParent->addChild(node);
+		}
+		inner->updateTransformValues(name, pose6D.x(), pose6D.y(), pose6D.z(), pose6D.rx(), pose6D.ry(), pose6D.rz());	
+}
+
  
 QVec SpecificWorker::fuerzasRepulsion()
 {
