@@ -29,6 +29,14 @@ SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mp
   S=STATE::IR;
   inner = new InnerModel("/home/salabeta/robocomp/files/innermodel/betaWorld2.xml");
   T.restart();
+  
+ 
+  
+  poseAndar.push_back(std::make_pair<std::string,float>("shoulder_right_1", 3));
+  poseAndar.push_back(std::make_pair<std::string,float>("elbow_right", 1.2)); 
+  ponerBrazo( poseAndar );
+  
+  S=STATE::IDLE;
 }
 
 /**
@@ -69,6 +77,11 @@ void SpecificWorker::compute( )
       break;
     case STATE::AM:
         avanzarMarca();
+      break;
+    case STATE::O:
+        orientar();
+      break;
+    case STATE::IDLE:
       break;
   }
   
@@ -147,7 +160,13 @@ bool SpecificWorker::rotar()
   if(tagslocal.existsId(3,t))
   {
     S=STATE::P;
-    marencontrada=true;
+    if(enmarca==false){
+      marencontrada=true;
+    }
+    else{
+      S=STATE::O; 
+    }
+    
     return true;
   }
   return false;
@@ -160,6 +179,9 @@ void SpecificWorker::parar()
   differentialrobot_proxy->setSpeedBase(0,0);
   if(marencontrada==true){
     S=STATE::AM;
+  }
+  if(enmarca==true && marencontrada==false){
+    S=STATE::IR;
   }
   
 }
@@ -217,7 +239,7 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
 	  velocidad=50;
       }
       
-     if (target.z() < 200)
+     if (target.z() < 50)
       {
 	S=STATE::P;
 	marencontrada=false;
@@ -228,6 +250,26 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
  	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
        }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;   } 
 
+}
+
+
+void SpecificWorker::orientar()
+{
+
+  qDebug()<<__FUNCTION__;
+  tag t;
+  TLaserData laserdata = laser_proxy->getLaserData();
+  differentialrobot_proxy->setSpeedBase(0,0);
+  if(tagslocal.existsId(3,t) )
+  {
+    
+    if(t.tx==0){
+      differentialrobot_proxy->setSpeedBase(0,0);
+      enmarca=false;
+    }
+    
+  }
+  
 }
 
 
@@ -286,6 +328,22 @@ void SpecificWorker::iniciar()
   rotando=false;
 }
 
+void SpecificWorker::ponerBrazo(const std::vector< std::pair<std::string, float> > & listaPose)
+{
+  try
+  {
+    RoboCompJointMotor::MotorGoalPosition mg;
+    for(auto i : listaPose)
+    {  
+      mg.name = i.first;
+      mg.position = i.second;
+      mg.maxSpeed = 1.f;
+      jointmotor_proxy->setPosition( mg );
+    }
+  }
+  catch(const Ice::Exception &ex)
+  { std::cout << ex << std::endl;}
+}
 
 
 

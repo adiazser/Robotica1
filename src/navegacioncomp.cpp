@@ -81,6 +81,7 @@
 // Includes for remote proxy example
 // #include <Remote.h>
 #include <Laser.h>
+#include <JointMotor.h>
 #include <DifferentialRobot.h>
 
 
@@ -91,6 +92,7 @@ using namespace std;
 using namespace RoboCompCommonBehavior;
 using namespace RoboCompAprilTags;
 using namespace RoboCompLaser;
+using namespace RoboCompJointMotor;
 using namespace RoboCompDifferentialRobot;
 
 
@@ -125,6 +127,7 @@ int NavegacionComp::run(int argc, char* argv[])
 	// Remote server proxy access example
 	// RemoteComponentPrx remotecomponent_proxy;
 	LaserPrx laser_proxy;
+JointMotorPrx jointmotor_proxy;
 DifferentialRobotPrx differentialrobot_proxy;
 
 
@@ -165,6 +168,17 @@ DifferentialRobotPrx differentialrobot_proxy;
 	}
 	rInfo("LaserProxy initialized Ok!");
 	mprx["LaserProxy"] = (::IceProxy::Ice::Object*)(&laser_proxy);//Remote server proxy creation example
+	try
+	{
+		jointmotor_proxy = JointMotorPrx::uncheckedCast( communicator()->stringToProxy( getProxyString("JointMotorProxy") ) );
+	}
+	catch(const Ice::Exception& ex)
+	{
+		cout << "[" << PROGRAM_NAME << "]: Exception: " << ex;
+		return EXIT_FAILURE;
+	}
+	rInfo("JointMotorProxy initialized Ok!");
+	mprx["JointMotorProxy"] = (::IceProxy::Ice::Object*)(&jointmotor_proxy);//Remote server proxy creation example
 	try
 	{
 		differentialrobot_proxy = DifferentialRobotPrx::uncheckedCast( communicator()->stringToProxy( getProxyString("DifferentialRobotProxy") ) );

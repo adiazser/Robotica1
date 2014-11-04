@@ -32,7 +32,7 @@ class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 
-enum class STATE {FR, C, R, I, IR, P, AM};
+enum class STATE {FR, C, R, I, IR, P, AM, O, IDLE};
 STATE S;
 QTime T;
 float intervalo;
@@ -45,6 +45,8 @@ QVec prm;
 TBaseState basestate;
 InnerModel *inner;
 float angulochoque;
+
+ 
 
 
 struct tag
@@ -105,8 +107,15 @@ private:
 	void iniciarrotar();
 	void parar();
 	bool avanzarMarca();
+	void orientar();
 	void controlador(const QVec& resultante, const QVec& target);
 	void addTransformInnerModel(const QString &name, const QString &parent, const QVec &pose6D);
+	
+	typedef std::pair<std::string, float> Tp;
+	typedef std::vector<Tp> TPose;
+	 TPose poseAndar;
+    TPose poseCoger;
+	void ponerBrazo( const TPose &listaPose );
 	
 public:
 	SpecificWorker(MapPrx& mprx, QObject *parent = 0);	

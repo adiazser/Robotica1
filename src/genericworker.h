@@ -26,6 +26,7 @@
 #include <qlog/qlog.h>
 #include <CommonBehavior.h>
 #include <Laser.h>
+#include <JointMotor.h>
 #include <DifferentialRobot.h>
 #include <AprilTags.h>
 
@@ -41,6 +42,7 @@ using namespace std;
        @author authorname
 */
 using namespace RoboCompLaser;
+using namespace RoboCompJointMotor;
 using namespace RoboCompDifferentialRobot;
 using namespace RoboCompAprilTags;
 
@@ -57,6 +59,7 @@ public:
 	QMutex *mutex;                //Shared mutex with servant
 
 	LaserPrx laser_proxy;
+	JointMotorPrx jointmotor_proxy;
 	DifferentialRobotPrx differentialrobot_proxy;
 	virtual void  newAprilTag(const tagsList& tags) = 0;
 

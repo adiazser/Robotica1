@@ -10,6 +10,7 @@ AprilTagsTopic.Endpoints=tcp -p 10261
 #RemoteProxy = remote:tcp -h remotehost -p 10001
 
 LaserProxy = laser:tcp -h localhost -p 10003
+JointMotorProxy = jointmotor:tcp -h localhost -p 10067
 DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 10004
 
 #

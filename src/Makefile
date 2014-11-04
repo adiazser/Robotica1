@@ -39,10 +39,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/salabeta/robocomp/components/grupo1alexjaime/navegacion
+CMAKE_SOURCE_DIR = /home/robocomp/robocomp/components/grupo1alexjaime/navegacion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/salabeta/robocomp/components/grupo1alexjaime/navegacion
+CMAKE_BINARY_DIR = /home/robocomp/robocomp/components/grupo1alexjaime/navegacion
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -110,14 +110,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -E cmake_progress_start /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/CMakeFiles/progress.marks
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles 0
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -E cmake_progress_start /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/CMakeFiles/progress.marks
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -126,22 +126,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/navegacioncomp.dir/rule:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/navegacioncomp.dir/rule
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/navegacioncomp.dir/rule
 .PHONY : src/CMakeFiles/navegacioncomp.dir/rule
 
 # Convenience name for target.
@@ -150,7 +150,7 @@ navegacioncomp: src/CMakeFiles/navegacioncomp.dir/rule
 
 # fast build rule for target.
 navegacioncomp/fast:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/build
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/build
 .PHONY : navegacioncomp/fast
 
 AprilTags.o: AprilTags.cpp.o
@@ -158,7 +158,7 @@ AprilTags.o: AprilTags.cpp.o
 
 # target to build an object file
 AprilTags.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/AprilTags.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/AprilTags.cpp.o
 .PHONY : AprilTags.cpp.o
 
 AprilTags.i: AprilTags.cpp.i
@@ -166,7 +166,7 @@ AprilTags.i: AprilTags.cpp.i
 
 # target to preprocess a source file
 AprilTags.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/AprilTags.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/AprilTags.cpp.i
 .PHONY : AprilTags.cpp.i
 
 AprilTags.s: AprilTags.cpp.s
@@ -174,7 +174,7 @@ AprilTags.s: AprilTags.cpp.s
 
 # target to generate assembly for a file
 AprilTags.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/AprilTags.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/AprilTags.cpp.s
 .PHONY : AprilTags.cpp.s
 
 CommonBehavior.o: CommonBehavior.cpp.o
@@ -182,7 +182,7 @@ CommonBehavior.o: CommonBehavior.cpp.o
 
 # target to build an object file
 CommonBehavior.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o
 .PHONY : CommonBehavior.cpp.o
 
 CommonBehavior.i: CommonBehavior.cpp.i
@@ -190,7 +190,7 @@ CommonBehavior.i: CommonBehavior.cpp.i
 
 # target to preprocess a source file
 CommonBehavior.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.i
 .PHONY : CommonBehavior.cpp.i
 
 CommonBehavior.s: CommonBehavior.cpp.s
@@ -198,7 +198,7 @@ CommonBehavior.s: CommonBehavior.cpp.s
 
 # target to generate assembly for a file
 CommonBehavior.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.s
 .PHONY : CommonBehavior.cpp.s
 
 DifferentialRobot.o: DifferentialRobot.cpp.o
@@ -206,7 +206,7 @@ DifferentialRobot.o: DifferentialRobot.cpp.o
 
 # target to build an object file
 DifferentialRobot.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o
 .PHONY : DifferentialRobot.cpp.o
 
 DifferentialRobot.i: DifferentialRobot.cpp.i
@@ -214,7 +214,7 @@ DifferentialRobot.i: DifferentialRobot.cpp.i
 
 # target to preprocess a source file
 DifferentialRobot.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.i
 .PHONY : DifferentialRobot.cpp.i
 
 DifferentialRobot.s: DifferentialRobot.cpp.s
@@ -222,15 +222,39 @@ DifferentialRobot.s: DifferentialRobot.cpp.s
 
 # target to generate assembly for a file
 DifferentialRobot.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.s
 .PHONY : DifferentialRobot.cpp.s
+
+JointMotor.o: JointMotor.cpp.o
+.PHONY : JointMotor.o
+
+# target to build an object file
+JointMotor.cpp.o:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o
+.PHONY : JointMotor.cpp.o
+
+JointMotor.i: JointMotor.cpp.i
+.PHONY : JointMotor.i
+
+# target to preprocess a source file
+JointMotor.cpp.i:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.i
+.PHONY : JointMotor.cpp.i
+
+JointMotor.s: JointMotor.cpp.s
+.PHONY : JointMotor.s
+
+# target to generate assembly for a file
+JointMotor.cpp.s:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.s
+.PHONY : JointMotor.cpp.s
 
 Laser.o: Laser.cpp.o
 .PHONY : Laser.o
 
 # target to build an object file
 Laser.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o
 .PHONY : Laser.cpp.o
 
 Laser.i: Laser.cpp.i
@@ -238,7 +262,7 @@ Laser.i: Laser.cpp.i
 
 # target to preprocess a source file
 Laser.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/Laser.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/Laser.cpp.i
 .PHONY : Laser.cpp.i
 
 Laser.s: Laser.cpp.s
@@ -246,7 +270,7 @@ Laser.s: Laser.cpp.s
 
 # target to generate assembly for a file
 Laser.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/Laser.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/Laser.cpp.s
 .PHONY : Laser.cpp.s
 
 apriltagsI.o: apriltagsI.cpp.o
@@ -254,7 +278,7 @@ apriltagsI.o: apriltagsI.cpp.o
 
 # target to build an object file
 apriltagsI.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/apriltagsI.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/apriltagsI.cpp.o
 .PHONY : apriltagsI.cpp.o
 
 apriltagsI.i: apriltagsI.cpp.i
@@ -262,7 +286,7 @@ apriltagsI.i: apriltagsI.cpp.i
 
 # target to preprocess a source file
 apriltagsI.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/apriltagsI.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/apriltagsI.cpp.i
 .PHONY : apriltagsI.cpp.i
 
 apriltagsI.s: apriltagsI.cpp.s
@@ -270,7 +294,7 @@ apriltagsI.s: apriltagsI.cpp.s
 
 # target to generate assembly for a file
 apriltagsI.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/apriltagsI.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/apriltagsI.cpp.s
 .PHONY : apriltagsI.cpp.s
 
 commonbehaviorI.o: commonbehaviorI.cpp.o
@@ -278,7 +302,7 @@ commonbehaviorI.o: commonbehaviorI.cpp.o
 
 # target to build an object file
 commonbehaviorI.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o
 .PHONY : commonbehaviorI.cpp.o
 
 commonbehaviorI.i: commonbehaviorI.cpp.i
@@ -286,7 +310,7 @@ commonbehaviorI.i: commonbehaviorI.cpp.i
 
 # target to preprocess a source file
 commonbehaviorI.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.i
 .PHONY : commonbehaviorI.cpp.i
 
 commonbehaviorI.s: commonbehaviorI.cpp.s
@@ -294,7 +318,7 @@ commonbehaviorI.s: commonbehaviorI.cpp.s
 
 # target to generate assembly for a file
 commonbehaviorI.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.s
 .PHONY : commonbehaviorI.cpp.s
 
 genericmonitor.o: genericmonitor.cpp.o
@@ -302,7 +326,7 @@ genericmonitor.o: genericmonitor.cpp.o
 
 # target to build an object file
 genericmonitor.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o
 .PHONY : genericmonitor.cpp.o
 
 genericmonitor.i: genericmonitor.cpp.i
@@ -310,7 +334,7 @@ genericmonitor.i: genericmonitor.cpp.i
 
 # target to preprocess a source file
 genericmonitor.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.i
 .PHONY : genericmonitor.cpp.i
 
 genericmonitor.s: genericmonitor.cpp.s
@@ -318,7 +342,7 @@ genericmonitor.s: genericmonitor.cpp.s
 
 # target to generate assembly for a file
 genericmonitor.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.s
 .PHONY : genericmonitor.cpp.s
 
 genericworker.o: genericworker.cpp.o
@@ -326,7 +350,7 @@ genericworker.o: genericworker.cpp.o
 
 # target to build an object file
 genericworker.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o
 .PHONY : genericworker.cpp.o
 
 genericworker.i: genericworker.cpp.i
@@ -334,7 +358,7 @@ genericworker.i: genericworker.cpp.i
 
 # target to preprocess a source file
 genericworker.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.i
 .PHONY : genericworker.cpp.i
 
 genericworker.s: genericworker.cpp.s
@@ -342,63 +366,63 @@ genericworker.s: genericworker.cpp.s
 
 # target to generate assembly for a file
 genericworker.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.s
 .PHONY : genericworker.cpp.s
 
-home/salabeta/robocomp/classes/qlog/qlog.o: home/salabeta/robocomp/classes/qlog/qlog.cpp.o
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.o
+home/robocomp/robocomp/classes/qlog/qlog.o: home/robocomp/robocomp/classes/qlog/qlog.cpp.o
+.PHONY : home/robocomp/robocomp/classes/qlog/qlog.o
 
 # target to build an object file
-home/salabeta/robocomp/classes/qlog/qlog.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.cpp.o
+home/robocomp/robocomp/classes/qlog/qlog.cpp.o:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o
+.PHONY : home/robocomp/robocomp/classes/qlog/qlog.cpp.o
 
-home/salabeta/robocomp/classes/qlog/qlog.i: home/salabeta/robocomp/classes/qlog/qlog.cpp.i
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.i
+home/robocomp/robocomp/classes/qlog/qlog.i: home/robocomp/robocomp/classes/qlog/qlog.cpp.i
+.PHONY : home/robocomp/robocomp/classes/qlog/qlog.i
 
 # target to preprocess a source file
-home/salabeta/robocomp/classes/qlog/qlog.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.i
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.cpp.i
+home/robocomp/robocomp/classes/qlog/qlog.cpp.i:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.i
+.PHONY : home/robocomp/robocomp/classes/qlog/qlog.cpp.i
 
-home/salabeta/robocomp/classes/qlog/qlog.s: home/salabeta/robocomp/classes/qlog/qlog.cpp.s
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.s
+home/robocomp/robocomp/classes/qlog/qlog.s: home/robocomp/robocomp/classes/qlog/qlog.cpp.s
+.PHONY : home/robocomp/robocomp/classes/qlog/qlog.s
 
 # target to generate assembly for a file
-home/salabeta/robocomp/classes/qlog/qlog.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.s
-.PHONY : home/salabeta/robocomp/classes/qlog/qlog.cpp.s
+home/robocomp/robocomp/classes/qlog/qlog.cpp.s:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.s
+.PHONY : home/robocomp/robocomp/classes/qlog/qlog.cpp.s
 
-home/salabeta/robocomp/classes/rapplication/rapplication.o: home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.o
+home/robocomp/robocomp/classes/rapplication/rapplication.o: home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o
+.PHONY : home/robocomp/robocomp/classes/rapplication/rapplication.o
 
 # target to build an object file
-home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
+home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o
+.PHONY : home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o
 
-home/salabeta/robocomp/classes/rapplication/rapplication.i: home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.i
+home/robocomp/robocomp/classes/rapplication/rapplication.i: home/robocomp/robocomp/classes/rapplication/rapplication.cpp.i
+.PHONY : home/robocomp/robocomp/classes/rapplication/rapplication.i
 
 # target to preprocess a source file
-home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i
+home/robocomp/robocomp/classes/rapplication/rapplication.cpp.i:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.i
+.PHONY : home/robocomp/robocomp/classes/rapplication/rapplication.cpp.i
 
-home/salabeta/robocomp/classes/rapplication/rapplication.s: home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.s
+home/robocomp/robocomp/classes/rapplication/rapplication.s: home/robocomp/robocomp/classes/rapplication/rapplication.cpp.s
+.PHONY : home/robocomp/robocomp/classes/rapplication/rapplication.s
 
 # target to generate assembly for a file
-home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s
-.PHONY : home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s
+home/robocomp/robocomp/classes/rapplication/rapplication.cpp.s:
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.s
+.PHONY : home/robocomp/robocomp/classes/rapplication/rapplication.cpp.s
 
 moc_apriltagsI.o: moc_apriltagsI.cxx.o
 .PHONY : moc_apriltagsI.o
 
 # target to build an object file
 moc_apriltagsI.cxx.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_apriltagsI.cxx.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_apriltagsI.cxx.o
 .PHONY : moc_apriltagsI.cxx.o
 
 moc_apriltagsI.i: moc_apriltagsI.cxx.i
@@ -406,7 +430,7 @@ moc_apriltagsI.i: moc_apriltagsI.cxx.i
 
 # target to preprocess a source file
 moc_apriltagsI.cxx.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_apriltagsI.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_apriltagsI.cxx.i
 .PHONY : moc_apriltagsI.cxx.i
 
 moc_apriltagsI.s: moc_apriltagsI.cxx.s
@@ -414,7 +438,7 @@ moc_apriltagsI.s: moc_apriltagsI.cxx.s
 
 # target to generate assembly for a file
 moc_apriltagsI.cxx.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_apriltagsI.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_apriltagsI.cxx.s
 .PHONY : moc_apriltagsI.cxx.s
 
 moc_commonbehaviorI.o: moc_commonbehaviorI.cxx.o
@@ -422,7 +446,7 @@ moc_commonbehaviorI.o: moc_commonbehaviorI.cxx.o
 
 # target to build an object file
 moc_commonbehaviorI.cxx.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o
 .PHONY : moc_commonbehaviorI.cxx.o
 
 moc_commonbehaviorI.i: moc_commonbehaviorI.cxx.i
@@ -430,7 +454,7 @@ moc_commonbehaviorI.i: moc_commonbehaviorI.cxx.i
 
 # target to preprocess a source file
 moc_commonbehaviorI.cxx.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.i
 .PHONY : moc_commonbehaviorI.cxx.i
 
 moc_commonbehaviorI.s: moc_commonbehaviorI.cxx.s
@@ -438,7 +462,7 @@ moc_commonbehaviorI.s: moc_commonbehaviorI.cxx.s
 
 # target to generate assembly for a file
 moc_commonbehaviorI.cxx.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.s
 .PHONY : moc_commonbehaviorI.cxx.s
 
 moc_genericmonitor.o: moc_genericmonitor.cxx.o
@@ -446,7 +470,7 @@ moc_genericmonitor.o: moc_genericmonitor.cxx.o
 
 # target to build an object file
 moc_genericmonitor.cxx.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o
 .PHONY : moc_genericmonitor.cxx.o
 
 moc_genericmonitor.i: moc_genericmonitor.cxx.i
@@ -454,7 +478,7 @@ moc_genericmonitor.i: moc_genericmonitor.cxx.i
 
 # target to preprocess a source file
 moc_genericmonitor.cxx.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.i
 .PHONY : moc_genericmonitor.cxx.i
 
 moc_genericmonitor.s: moc_genericmonitor.cxx.s
@@ -462,7 +486,7 @@ moc_genericmonitor.s: moc_genericmonitor.cxx.s
 
 # target to generate assembly for a file
 moc_genericmonitor.cxx.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.s
 .PHONY : moc_genericmonitor.cxx.s
 
 moc_genericworker.o: moc_genericworker.cxx.o
@@ -470,7 +494,7 @@ moc_genericworker.o: moc_genericworker.cxx.o
 
 # target to build an object file
 moc_genericworker.cxx.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o
 .PHONY : moc_genericworker.cxx.o
 
 moc_genericworker.i: moc_genericworker.cxx.i
@@ -478,7 +502,7 @@ moc_genericworker.i: moc_genericworker.cxx.i
 
 # target to preprocess a source file
 moc_genericworker.cxx.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.i
 .PHONY : moc_genericworker.cxx.i
 
 moc_genericworker.s: moc_genericworker.cxx.s
@@ -486,7 +510,7 @@ moc_genericworker.s: moc_genericworker.cxx.s
 
 # target to generate assembly for a file
 moc_genericworker.cxx.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.s
 .PHONY : moc_genericworker.cxx.s
 
 moc_specificmonitor.o: moc_specificmonitor.cxx.o
@@ -494,7 +518,7 @@ moc_specificmonitor.o: moc_specificmonitor.cxx.o
 
 # target to build an object file
 moc_specificmonitor.cxx.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o
 .PHONY : moc_specificmonitor.cxx.o
 
 moc_specificmonitor.i: moc_specificmonitor.cxx.i
@@ -502,7 +526,7 @@ moc_specificmonitor.i: moc_specificmonitor.cxx.i
 
 # target to preprocess a source file
 moc_specificmonitor.cxx.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.i
 .PHONY : moc_specificmonitor.cxx.i
 
 moc_specificmonitor.s: moc_specificmonitor.cxx.s
@@ -510,7 +534,7 @@ moc_specificmonitor.s: moc_specificmonitor.cxx.s
 
 # target to generate assembly for a file
 moc_specificmonitor.cxx.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.s
 .PHONY : moc_specificmonitor.cxx.s
 
 moc_specificworker.o: moc_specificworker.cxx.o
@@ -518,7 +542,7 @@ moc_specificworker.o: moc_specificworker.cxx.o
 
 # target to build an object file
 moc_specificworker.cxx.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o
 .PHONY : moc_specificworker.cxx.o
 
 moc_specificworker.i: moc_specificworker.cxx.i
@@ -526,7 +550,7 @@ moc_specificworker.i: moc_specificworker.cxx.i
 
 # target to preprocess a source file
 moc_specificworker.cxx.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.i
 .PHONY : moc_specificworker.cxx.i
 
 moc_specificworker.s: moc_specificworker.cxx.s
@@ -534,7 +558,7 @@ moc_specificworker.s: moc_specificworker.cxx.s
 
 # target to generate assembly for a file
 moc_specificworker.cxx.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.s
 .PHONY : moc_specificworker.cxx.s
 
 navegacioncomp.o: navegacioncomp.cpp.o
@@ -542,7 +566,7 @@ navegacioncomp.o: navegacioncomp.cpp.o
 
 # target to build an object file
 navegacioncomp.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o
 .PHONY : navegacioncomp.cpp.o
 
 navegacioncomp.i: navegacioncomp.cpp.i
@@ -550,7 +574,7 @@ navegacioncomp.i: navegacioncomp.cpp.i
 
 # target to preprocess a source file
 navegacioncomp.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.i
 .PHONY : navegacioncomp.cpp.i
 
 navegacioncomp.s: navegacioncomp.cpp.s
@@ -558,7 +582,7 @@ navegacioncomp.s: navegacioncomp.cpp.s
 
 # target to generate assembly for a file
 navegacioncomp.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.s
 .PHONY : navegacioncomp.cpp.s
 
 specificmonitor.o: specificmonitor.cpp.o
@@ -566,7 +590,7 @@ specificmonitor.o: specificmonitor.cpp.o
 
 # target to build an object file
 specificmonitor.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o
 .PHONY : specificmonitor.cpp.o
 
 specificmonitor.i: specificmonitor.cpp.i
@@ -574,7 +598,7 @@ specificmonitor.i: specificmonitor.cpp.i
 
 # target to preprocess a source file
 specificmonitor.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.i
 .PHONY : specificmonitor.cpp.i
 
 specificmonitor.s: specificmonitor.cpp.s
@@ -582,7 +606,7 @@ specificmonitor.s: specificmonitor.cpp.s
 
 # target to generate assembly for a file
 specificmonitor.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.s
 .PHONY : specificmonitor.cpp.s
 
 specificworker.o: specificworker.cpp.o
@@ -590,7 +614,7 @@ specificworker.o: specificworker.cpp.o
 
 # target to build an object file
 specificworker.cpp.o:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o
 .PHONY : specificworker.cpp.o
 
 specificworker.i: specificworker.cpp.i
@@ -598,7 +622,7 @@ specificworker.i: specificworker.cpp.i
 
 # target to preprocess a source file
 specificworker.cpp.i:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.i
 .PHONY : specificworker.cpp.i
 
 specificworker.s: specificworker.cpp.s
@@ -606,7 +630,7 @@ specificworker.s: specificworker.cpp.s
 
 # target to generate assembly for a file
 specificworker.cpp.s:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.s
 .PHONY : specificworker.cpp.s
 
 # Help Target
@@ -631,6 +655,9 @@ help:
 	@echo "... DifferentialRobot.o"
 	@echo "... DifferentialRobot.i"
 	@echo "... DifferentialRobot.s"
+	@echo "... JointMotor.o"
+	@echo "... JointMotor.i"
+	@echo "... JointMotor.s"
 	@echo "... Laser.o"
 	@echo "... Laser.i"
 	@echo "... Laser.s"
@@ -646,12 +673,12 @@ help:
 	@echo "... genericworker.o"
 	@echo "... genericworker.i"
 	@echo "... genericworker.s"
-	@echo "... home/salabeta/robocomp/classes/qlog/qlog.o"
-	@echo "... home/salabeta/robocomp/classes/qlog/qlog.i"
-	@echo "... home/salabeta/robocomp/classes/qlog/qlog.s"
-	@echo "... home/salabeta/robocomp/classes/rapplication/rapplication.o"
-	@echo "... home/salabeta/robocomp/classes/rapplication/rapplication.i"
-	@echo "... home/salabeta/robocomp/classes/rapplication/rapplication.s"
+	@echo "... home/robocomp/robocomp/classes/qlog/qlog.o"
+	@echo "... home/robocomp/robocomp/classes/qlog/qlog.i"
+	@echo "... home/robocomp/robocomp/classes/qlog/qlog.s"
+	@echo "... home/robocomp/robocomp/classes/rapplication/rapplication.o"
+	@echo "... home/robocomp/robocomp/classes/rapplication/rapplication.i"
+	@echo "... home/robocomp/robocomp/classes/rapplication/rapplication.s"
 	@echo "... moc_apriltagsI.o"
 	@echo "... moc_apriltagsI.i"
 	@echo "... moc_apriltagsI.s"
@@ -690,6 +717,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
