@@ -34,9 +34,15 @@ SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mp
   
   poseAndar.push_back(std::make_pair<std::string,float>("shoulder_right_1", 3));
   poseAndar.push_back(std::make_pair<std::string,float>("elbow_right", 1.2)); 
+  poseAndar.push_back(std::make_pair<std::string,float>("wrist_right_2", 1.1)); 
+  
+  poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_1", 0));
+  poseCoger.push_back(std::make_pair<std::string,float>("elbow_right", 1.2)); 
+  poseCoger.push_back(std::make_pair<std::string,float>("wrist_right_2", 1.1)); 
+  
   ponerBrazo( poseAndar );
   
-  S=STATE::IDLE;
+  //S=STATE::IDLE;
 }
 
 /**
@@ -146,7 +152,7 @@ void SpecificWorker::iniciarrotar()
    qDebug()<<__FUNCTION__;
    try
    {
-      differentialrobot_proxy->setSpeedBase (0, 1);
+      differentialrobot_proxy->setSpeedBase (0, 0.8);
       S=STATE::R;
    } catch ( const Ice::Exception &E )
      { 
@@ -157,7 +163,7 @@ void SpecificWorker::iniciarrotar()
 bool SpecificWorker::rotar()
 {
   tag t;
-  if(tagslocal.existsId(3,t))
+  if(tagslocal.existsId(10,t))
   {
     S=STATE::P;
     if(enmarca==false){
@@ -181,7 +187,7 @@ void SpecificWorker::parar()
     S=STATE::AM;
   }
   if(enmarca==true && marencontrada==false){
-    S=STATE::IR;
+    S=STATE::O;
   }
   
 }
@@ -195,12 +201,12 @@ bool SpecificWorker::avanzarMarca()
   QVec r2(3);
   QVec imagine;
   
-  if(tagslocal.existsId(3,t) )
+  if(tagslocal.existsId(10,t) )
   {
       QVec punto(3);
       punto[0]=0;
       punto[1]=0;
-      punto[2]=-500;
+      punto[2]=900;
       
       addTransformInnerModel("marca-desde-camara", "camera", t.getPose());
       memory = inner->transform("world", punto, "marca-desde-camara");
@@ -238,6 +244,9 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
       if(velocidad <50){
 	  velocidad=50;
       }
+      if(velocidad >500){
+	 velocidad=500;
+      }
       
      if (target.z() < 50)
       {
@@ -259,13 +268,17 @@ void SpecificWorker::orientar()
   qDebug()<<__FUNCTION__;
   tag t;
   TLaserData laserdata = laser_proxy->getLaserData();
-  differentialrobot_proxy->setSpeedBase(0,0);
-  if(tagslocal.existsId(3,t) )
+  differentialrobot_proxy->setSpeedBase(0,0.3);
+  if(tagslocal.existsId(10,t) )
   {
     
-    if(t.tx==0){
+    qDebug()<< "TX" << t.tx;
+   
+    if(t.tx<35 && t.tx>-35){
       differentialrobot_proxy->setSpeedBase(0,0);
       enmarca=false;
+      ponerBrazo( poseCoger );
+      S=STATE::IDLE;
     }
     
   }
@@ -307,7 +320,10 @@ QVec SpecificWorker::fuerzasRepulsion()
       {
 	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
 	float mod = fuerza.norm2();
-	expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(4*mod))); 
+	if (i.dist < 1000){
+	  expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
+	}
+	
 	//qDebug() << "angle" << i.angle << "dist" << i.dist << expulsion << fuerza.normalize() * (float)(1.0/(mod)) << fuerza;
       }
     }
@@ -323,7 +339,7 @@ QVec SpecificWorker::fuerzasRepulsion()
 void SpecificWorker::iniciar()
 {
   qDebug()<<__FUNCTION__;
-  differentialrobot_proxy->setSpeedBase(500,0);
+  differentialrobot_proxy->setSpeedBase(100,0);
   S=STATE::FR;
   rotando=false;
 }
