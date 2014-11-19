@@ -63,7 +63,7 @@
 
 // ICE includes
 #include <Ice/Ice.h>
-#include <IceStorm/IceStorm.h>
+
 #include <Ice/Application.h>
 
 #include <rapplication/rapplication.h>
@@ -76,13 +76,14 @@
 #include "specificworker.h"
 #include "specificmonitor.h"
 #include "commonbehaviorI.h"
-#include <apriltagsI.h>
 
 // Includes for remote proxy example
 // #include <Remote.h>
 #include <Laser.h>
 #include <JointMotor.h>
 #include <DifferentialRobot.h>
+#include <GetAprilTags.h>
+#include <BodyInverseKinematics.h>
 
 
 // User includes here
@@ -90,10 +91,11 @@
 // Namespaces
 using namespace std;
 using namespace RoboCompCommonBehavior;
-using namespace RoboCompAprilTags;
 using namespace RoboCompLaser;
 using namespace RoboCompJointMotor;
 using namespace RoboCompDifferentialRobot;
+using namespace RoboCompGetAprilTags;
+using namespace RoboCompBodyInverseKinematics;
 
 
 class NavegacionComp : public RoboComp::Application
@@ -129,6 +131,9 @@ int NavegacionComp::run(int argc, char* argv[])
 	LaserPrx laser_proxy;
 JointMotorPrx jointmotor_proxy;
 DifferentialRobotPrx differentialrobot_proxy;
+GetAprilTagsPrx getapriltags0_proxy;
+GetAprilTagsPrx getapriltags1_proxy;
+BodyInverseKinematicsPrx bodyinversekinematics_proxy;
 
 
 	string proxy;
@@ -189,9 +194,40 @@ DifferentialRobotPrx differentialrobot_proxy;
 		return EXIT_FAILURE;
 	}
 	rInfo("DifferentialRobotProxy initialized Ok!");
-	mprx["DifferentialRobotProxy"] = (::IceProxy::Ice::Object*)(&differentialrobot_proxy);
-	IceStorm::TopicManagerPrx topicManager = IceStorm::TopicManagerPrx::checkedCast(communicator()->propertyToProxy("TopicManager.Proxy"));
-	
+	mprx["DifferentialRobotProxy"] = (::IceProxy::Ice::Object*)(&differentialrobot_proxy);//Remote server proxy creation example
+	try
+	{
+		getapriltags0_proxy = GetAprilTagsPrx::uncheckedCast( communicator()->stringToProxy( getProxyString("GetAprilTags0Proxy") ) );
+	}
+	catch(const Ice::Exception& ex)
+	{
+		cout << "[" << PROGRAM_NAME << "]: Exception: " << ex;
+		return EXIT_FAILURE;
+	}
+	rInfo("GetAprilTags0Proxy initialized Ok!");
+	mprx["GetAprilTags0Proxy"] = (::IceProxy::Ice::Object*)(&getapriltags0_proxy);//Remote server proxy creation example
+	try
+	{
+		getapriltags1_proxy = GetAprilTagsPrx::uncheckedCast( communicator()->stringToProxy( getProxyString("GetAprilTags1Proxy") ) );
+	}
+	catch(const Ice::Exception& ex)
+	{
+		cout << "[" << PROGRAM_NAME << "]: Exception: " << ex;
+		return EXIT_FAILURE;
+	}
+	rInfo("GetAprilTags1Proxy initialized Ok!");
+	mprx["GetAprilTags1Proxy"] = (::IceProxy::Ice::Object*)(&getapriltags1_proxy);//Remote server proxy creation example
+	try
+	{
+		bodyinversekinematics_proxy = BodyInverseKinematicsPrx::uncheckedCast( communicator()->stringToProxy( getProxyString("BodyInverseKinematicsProxy") ) );
+	}
+	catch(const Ice::Exception& ex)
+	{
+		cout << "[" << PROGRAM_NAME << "]: Exception: " << ex;
+		return EXIT_FAILURE;
+	}
+	rInfo("BodyInverseKinematicsProxy initialized Ok!");
+	mprx["BodyInverseKinematicsProxy"] = (::IceProxy::Ice::Object*)(&bodyinversekinematics_proxy);
 	
 	GenericWorker *worker = new SpecificWorker(mprx);
 	//Monitor thread
@@ -210,27 +246,6 @@ DifferentialRobotPrx differentialrobot_proxy;
 		adapterCommonBehavior->add(commonbehaviorI, communicator()->stringToIdentity("commonbehavior"));
 		adapterCommonBehavior->activate();
 		// Server adapter creation and publication
-    	Ice::ObjectAdapterPtr AprilTags_adapter = communicator()->createObjectAdapter("AprilTagsTopic");
-    	AprilTagsPtr apriltagsI_ = new AprilTagsI(worker);
-    	Ice::ObjectPrx apriltags_proxy = AprilTags_adapter->addWithUUID(apriltagsI_)->ice_oneway();
-    	IceStorm::TopicPrx apriltags_topic;
-    	if(!apriltags_topic){
-	    	try {
-	    		apriltags_topic = topicManager->create("AprilTags");
-	    	}
-	    	catch (const IceStorm::TopicExists&) {
-	    	  	//Another client created the topic
-	    	  	try{
-	       			apriltags_topic = topicManager->retrieve("AprilTags");
-	    	  	}catch(const IceStorm::NoSuchTopic&){
-	    	  	  	//Error. Topic does not exist
-				}
-	    	}
-	    	IceStorm::QoS qos;
-	      	apriltags_topic->subscribeAndGetPublisher(qos, apriltags_proxy);
-    	}
-    	AprilTags_adapter->activate();
-    	// Server adapter creation and publication
 		cout << SERVER_FULL_NAME " started" << endl;
 
 		// User defined QtGui elements ( main window, dialogs, etc )

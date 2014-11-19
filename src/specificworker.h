@@ -32,7 +32,8 @@ class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 
-enum class STATE {FR, C, R, I, IR, P, AM, O, IDLE};
+enum class STATE {CC, R, IR, P, AM, O, IDLE};
+//enum class STATE {CC, C, R,IR, P, AM, O, IDLE};
 STATE S;
 QTime T;
 float intervalo;
@@ -45,8 +46,7 @@ QVec prm;
 TBaseState basestate;
 InnerModel *inner;
 float angulochoque;
-
- 
+ TLaserData laserdata;
 
 
 struct tag
@@ -64,13 +64,17 @@ struct tag
   {
     return pose;
   }
+  void print()
+  {
+    qDebug() << "	" << tx << ty << tz << ry;
+  }
   QVec pose;
 };
 
 struct tagslocalT
 {
   QMutex mutex;
-  void update( const tagsList &t)
+  void update( const RoboCompGetAprilTags::listaMarcas &t)
   {
     QMutexLocker m(&mutex);
     tags.clear();
@@ -93,17 +97,23 @@ struct tagslocalT
       }
     return false;
   }
+  void print()
+  {
+    qDebug() << "---------------PRINTING TAGS--------------";
+    for(auto i: tags)
+      i.print();
+    qDebug() << "---------------END TAGS--------------";
+  }
   std::vector<tag> tags;
 };
 
-tagslocalT tagslocal;
+tagslocalT tagslocal0, tagslocal1;
 
 
 private:
 	bool chocar();
 	bool rotar();
 	QVec fuerzasRepulsion();
-	void iniciar();
 	void iniciarrotar();
 	void parar();
 	bool avanzarMarca();
@@ -113,15 +123,16 @@ private:
 	
 	typedef std::pair<std::string, float> Tp;
 	typedef std::vector<Tp> TPose;
-	 TPose poseAndar;
-    TPose poseCoger;
+	TPose poseAndar;
+	TPose poseCoger;
 	void ponerBrazo( const TPose &listaPose );
+	void cogerCaja();
 	
 public:
 	SpecificWorker(MapPrx& mprx, QObject *parent = 0);	
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
-	void  newAprilTag(const tagsList& tags);
+	void  newAprilTag(const RoboCompGetAprilTags::listaMarcas& tags);
 
 public slots:
  	void compute(); 	

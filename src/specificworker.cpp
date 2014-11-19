@@ -26,6 +26,7 @@
 
 SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mprx, parent)	
 {
+  
   S=STATE::IR;
   inner = new InnerModel("/home/salabeta/robocomp/files/innermodel/betaWorld2.xml");
   T.restart();
@@ -33,14 +34,20 @@ SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mp
  
   
   poseAndar.push_back(std::make_pair<std::string,float>("shoulder_right_1", 3));
-  poseAndar.push_back(std::make_pair<std::string,float>("elbow_right", 1.2)); 
-  poseAndar.push_back(std::make_pair<std::string,float>("wrist_right_2", 1.1)); 
+  poseAndar.push_back(std::make_pair<std::string,float>("elbow_right", 1)); 
+  poseAndar.push_back(std::make_pair<std::string,float>("wrist_right_2", 1.1));
+  poseAndar.push_back(std::make_pair<std::string,float>("wrist_right_giro", 0.0));
   
   poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_1", 0));
-  poseCoger.push_back(std::make_pair<std::string,float>("elbow_right", 1.2)); 
-  poseCoger.push_back(std::make_pair<std::string,float>("wrist_right_2", 1.1)); 
+  poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_2", -0.7));
+  poseCoger.push_back(std::make_pair<std::string,float>("elbow_right", 1)); 
+  poseCoger.push_back(std::make_pair<std::string,float>("wrist_right_giro", 0));
+  poseCoger.push_back(std::make_pair<std::string,float>("wrist_right_2", 1.1));
+  poseCoger.push_back(std::make_pair<std::string,float>("finger_right_1", 0.0));
+  poseCoger.push_back(std::make_pair<std::string,float>("finger_right_2", 0.0));
   
   ponerBrazo( poseAndar );
+  timer.start(Period);
   
   //S=STATE::IDLE;
 }
@@ -55,23 +62,44 @@ SpecificWorker::~SpecificWorker()
 
 
 void SpecificWorker::compute( )
-{
-  try{
+{ 
+  static QTime reloj= QTime::currentTime();
+  static QTime reloj2= QTime::currentTime();
+  try
+  {
     differentialrobot_proxy->getBaseState(basestate);
+    laserdata = laser_proxy->getLaserData();
   }
   catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
-  inner->updateTransformValues("base", basestate.x,0,basestate.z, 0, basestate.alpha,0);
+  inner->updateTransformValues("robot", basestate.x,0,basestate.z, 0, basestate.alpha,0);
+  
+  
+  try
+  {
+    tagslocal0.update(getapriltags0_proxy->checkMarcas());
+    //tagslocal0.print();
+    tagslocal1.update(getapriltags1_proxy->checkMarcas());    
+    //tagslocal1.print();
+  }
+  catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
+  
+  /* try
+  {
+    RoboCompJointMotor::MotorStateMap motorMap;
+    jointmotor_proxy->getAllMotorState(motorMap);
+  }
+  catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
+  */
+  
+//   readBaseState();
+//   readTags();
+//   readArmState();
   
   switch(S){
-    case STATE::I:
-        iniciar();
-      break;
-    case STATE::FR:
-        fuerzasRepulsion();
-      break;
-    case STATE::C:
+   /* case STATE::C:
         chocar();
       break;
+      */
     case STATE::R:
         rotar();
       break;
@@ -82,14 +110,20 @@ void SpecificWorker::compute( )
         parar();
       break;
     case STATE::AM:
+        reloj2.restart();
         avanzarMarca();
+	 qDebug()<< "Reloj AVANZAR" << reloj2.restart();
       break;
     case STATE::O:
         orientar();
       break;
+    case STATE::CC:
+       cogerCaja();
+       break;
     case STATE::IDLE:
       break;
   }
+  qDebug()<< reloj.restart();
   
 }
 
@@ -119,15 +153,11 @@ void SpecificWorker::compute( )
 }
 */
 
-///OJO SE EJECUTA EN OTRO HILO
 
-void SpecificWorker::newAprilTag(const tagsList& tags)
-{
-   //qDebug()<<__FUNCTION__;
-   tagslocal.update(tags);
-}
 
-bool SpecificWorker::chocar()
+
+
+/*bool SpecificWorker::chocar()
 {
    
    qDebug()<<__FUNCTION__;
@@ -146,13 +176,15 @@ bool SpecificWorker::chocar()
    
    return true;
 }
+*/
+
 
 void SpecificWorker::iniciarrotar()
 {
    qDebug()<<__FUNCTION__;
    try
    {
-      differentialrobot_proxy->setSpeedBase (0, 0.8);
+      differentialrobot_proxy->setSpeedBase (0, 0.5);
       S=STATE::R;
    } catch ( const Ice::Exception &E )
      { 
@@ -163,7 +195,7 @@ void SpecificWorker::iniciarrotar()
 bool SpecificWorker::rotar()
 {
   tag t;
-  if(tagslocal.existsId(10,t))
+  if(tagslocal0.existsId(10,t))
   {
     S=STATE::P;
     if(enmarca==false){
@@ -183,6 +215,7 @@ void SpecificWorker::parar()
 {
   qDebug()<<__FUNCTION__;
   differentialrobot_proxy->setSpeedBase(0,0);
+  ponerBrazo( poseCoger );
   if(marencontrada==true){
     S=STATE::AM;
   }
@@ -196,35 +229,43 @@ bool SpecificWorker::avanzarMarca()
 {
   qDebug()<<__FUNCTION__;
   tag t;
-  TLaserData laserdata = laser_proxy->getLaserData();
   static QVec memory=QVec::zeros(3);
   QVec r2(3);
   QVec imagine;
   
-  if(tagslocal.existsId(10,t) )
+  if(tagslocal0.existsId(10,t) && tagslocal1.existsId(10 , t) ){
+    	S=STATE::P;
+	marencontrada=false;
+	enmarca=true;
+    return true;
+  }
+  else if(tagslocal1.existsId(10, t)){
+    	S=STATE::P;
+	marencontrada=false;
+	enmarca=true;
+    return true;
+  }
+  else if(tagslocal0.existsId(10,t) )
   {
       QVec punto(3);
       punto[0]=0;
       punto[1]=0;
-      punto[2]=900;
+      punto[2]=0;
       
       addTransformInnerModel("marca-desde-camara", "camera", t.getPose());
       memory = inner->transform("world", punto, "marca-desde-camara");
       imagine= inner->transform("camera", punto, "marca-desde-camara");
-      imagine.print("PUNTO VISTO DESDE LA CAMARA IF");
+      //imagine.print("PUNTO VISTO DESDE LA CAMARA IF");
     }   
     else
     {
       imagine = inner->transform("camera", memory, "world");
-      imagine.print("PUNTO VISTO DESDE LA CAMARA ELSE");
+      //imagine.print("PUNTO VISTO DESDE LA CAMARA ELSE");
      }
      
-     
-      QVec fuerzas = fuerzasRepulsion();
-      QVec resultante = fuerzas + QVec::vec2(imagine.x(),imagine.z());
-      
-      
-      controlador(resultante, imagine);
+     QVec fuerzas = fuerzasRepulsion();
+     QVec resultante = fuerzas + QVec::vec2(imagine.x(),imagine.z());
+     controlador(resultante, imagine);
      
     
     return true;
@@ -239,13 +280,13 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
 	angulo=0.7;
       }else if (angulo< -0.7)
 	angulo =-0.7;
-      
+      angulochoque=angulo;
       float velocidad=0.2*resultante.norm2();
       if(velocidad <50){
 	  velocidad=50;
       }
-      if(velocidad >500){
-	 velocidad=500;
+      if(velocidad >200){
+	 velocidad=200;
       }
       
      if (target.z() < 50)
@@ -267,22 +308,65 @@ void SpecificWorker::orientar()
 
   qDebug()<<__FUNCTION__;
   tag t;
-  TLaserData laserdata = laser_proxy->getLaserData();
-  differentialrobot_proxy->setSpeedBase(0,0.3);
-  if(tagslocal.existsId(10,t) )
+  
+      if(rotando==false){
+	if (angulochoque <0){
+	   angulochoque = 0.2;
+	   rotando=true;
+	}
+	else{
+	  angulochoque=-0.2;
+	  rotando=true;
+	}
+      }
+  
+  differentialrobot_proxy->setSpeedBase(0,angulochoque);
+  if(tagslocal1.existsId(10,t) )
   {
-    
-    qDebug()<< "TX" << t.tx;
-   
-    if(t.tx<35 && t.tx>-35){
+   // qDebug()<< "TX" << t.tx;
+    if(t.tx<70 && t.tx>-70){
       differentialrobot_proxy->setSpeedBase(0,0);
       enmarca=false;
-      ponerBrazo( poseCoger );
-      S=STATE::IDLE;
+      rotando=false;
+      //S=STATE::IDLE;
+      S=STATE::CC;
     }
     
   }
   
+}
+
+void SpecificWorker::cogerCaja()
+{
+  qDebug()<<__FUNCTION__;
+  tag t;
+  if(tagslocal1.existsId(10,t) )
+  {
+    
+    if(fabs(t.tx)>10){
+      Axis ax;
+      ax.x= 1; 
+      ax.y= 0;
+      ax.z= 0;
+      qDebug() << "enviado al brazo a x";
+      bodyinversekinematics_proxy->advanceAlongAxis("ARM", ax, 0.8*t.tx);
+      sleep(2);
+    }
+    else if (fabs(t.ty)>30)
+    {
+      Axis ax;
+      ax.x= 0; 
+      ax.y= 1;
+      ax.z= 0;
+      qDebug() << "enviado al brazo en Y";
+      bodyinversekinematics_proxy->advanceAlongAxis("ARM", ax, 0.8*t.ty);
+      sleep(2);
+    }
+    else
+    {      
+     S=STATE::IDLE; 
+    }
+  }
 }
 
 
@@ -301,21 +385,13 @@ void SpecificWorker::addTransformInnerModel(const QString &name, const QString &
 QVec SpecificWorker::fuerzasRepulsion()
 {
 
-  qDebug()<<__FUNCTION__;
-  TLaserData laserdata = laser_proxy->getLaserData();
+  //qDebug()<<__FUNCTION__;
   QVec fuerza;
   QVec expulsion = QVec::zeros(2);
   try{
     
     for(auto i: laserdata)
     {
-      //qDebug() << "Datos LaserData" << i.dist << i.angle; 
-     /* if(i.dist < 500 && i.angle<1.2 && i.angle >-1.2){
-	S=STATE::C;
-	break;
-      }else{
-	S=STATE::I;
-      }*/
       if (i.angle>-1.5 and i.angle< 1.5)
       {
 	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
@@ -324,24 +400,13 @@ QVec SpecificWorker::fuerzasRepulsion()
 	  expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
 	}
 	
-	//qDebug() << "angle" << i.angle << "dist" << i.dist << expulsion << fuerza.normalize() * (float)(1.0/(mod)) << fuerza;
       }
     }
-    //qDebug() << "repuls" << expulsion*100000;
     
   }catch(const Ice::Exception &e){
       std::cout<<e<<std::endl;
   }
   return expulsion*100000;
-}
-
-
-void SpecificWorker::iniciar()
-{
-  qDebug()<<__FUNCTION__;
-  differentialrobot_proxy->setSpeedBase(100,0);
-  S=STATE::FR;
-  rotando=false;
 }
 
 void SpecificWorker::ponerBrazo(const std::vector< std::pair<std::string, float> > & listaPose)
@@ -365,106 +430,7 @@ void SpecificWorker::ponerBrazo(const std::vector< std::pair<std::string, float>
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-	timer.start(Period);
+	
 	return true;
 };
  
-      //Qvec r = inner->transform("world", QVec::vec3(t.tx,0,t.tz), "camerargbd");
-    
-      /*Rot2D m(t.ry);
-      Rot2DC mt(t.ry);
-      QVec punto(2);
-      punto[0]=0;
-      punto[1]=500;
-      QVec T= QVec::vec2(t.tx, t.tz);
-      QVec f = m*(-(punto-T));
-   //   f.print("f");
-      puntoencontrado=true;
-      marca=f;
-      Rot2D mm(-basestate.alpha);
-      qDebug()<<basestate.alpha;
-      QVec puntom(2);
-      puntom[0]=marca[0];
-      puntom[1]=marca[1];
-      QVec Tm= QVec::vec2(basestate.x, basestate.z);
-      prm = mm*puntom + Tm;
-      
-     // Rot2D m2(-basestate.alpha);
-    //  qDebug()<<basestate.alpha;
-    //  QVec punto(2);
-    //  QVec T2= QVec::vec2(basestate.x, basestate.z);
-      QVec f2 = mm*prm + Tm;
-    //QVec f= m*(punto-T);
-      prm.print("prm: ");
-      f2.print("resultado f");
-    
-      angulo=0.001*f2[0];
-      if (angulo>0.8)
-	angulo=0.8;
-      if (angulo < -0.8)
-	angulo=-0.8;
-      velocidad=0.5*f2[1];
-      if(velocidad>500)
-	velocidad=500;
-    
-      if(f2[1]>-80 && f2[1]<80)
-      {
-	S=STATE::P;
-	return true;
-      } try{
-	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
-    }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
-      
-       * r[0] es la variable de giro el angulo
-       * r[1] es la distancia a la pared 
-       angulo=0.001*f[0];
-       if (angulo>0.8)
-	 angulo=0.8;
-       velocidad=0.5*f[1];
-       if(velocidad>500)
-	 velocidad=500;
-      if( f[1]>-1 && f[1]<1)
-      {
-	    S=STATE::P;
-	    marencontrada=false;
-	    return true;
-      }
-      
-       try{
-	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
-      }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
-      
-  }
-  
-  else{
-    //mundo 
-    Rot2D m(-basestate.alpha);
-    qDebug()<<basestate.alpha;
-    QVec punto(2);
-    punto[0]=prm[0];
-    punto[1]=prm[1];
-    QVec T= QVec::vec2(basestate.x, basestate.z);
-    QVec f = m*punto - T;
-    //QVec f= m*(punto-T);
-    prm.print("prm: ");
-    f.print("resultado f");
-    
-    angulo=0.001*f[0];
-    if (angulo>0.8)
-      angulo=0.8;
-    velocidad=0.5*f[1];
-    if(velocidad>500)
-      velocidad=300;
-    
-    if(f[1]>-100 && f[1]<100)
-    {
-      S=STATE::P;
-      return true;
-     }
-    try{
-	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
-    }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;      }
-    
-    */
-
-

@@ -1,4 +1,4 @@
-import "/robocomp/interfaces/IDSLs/AprilTags.idsl";
+
 /*
  * Proceso que se comunica con otros procesos.
  * Cada uno tendra sus cmake.
@@ -7,12 +7,15 @@ import "/robocomp/interfaces/IDSLs/AprilTags.idsl";
  import "/robocomp/interfaces/IDSLs/Laser.idsl";
  import "/robocomp/interfaces/IDSLs/DifferentialRobot.idsl";
  import "/robocomp/interfaces/IDSLs/JointMotor.idsl";
- 
+ //import "/robocomp/interfaces/IDSLs/AprilTags.idsl";
+ import "/robocomp/interfaces/IDSLs/GetAprilTags.idsl";
+ import "/robocomp/interfaces/IDSLs/BodyInverseKinematics.idsl";
  
 Component NavegacionComp{
 	Communications{
-		requires Laser, DifferentialRobot, JointMotor;
-		subscribesTo AprilTags;
+		requires Laser, DifferentialRobot, JointMotor, GetAprilTags, GetAprilTags, BodyInverseKinematics;
+		//subscribesTo AprilTags;
+	
 		
 	};
 	language Cpp;

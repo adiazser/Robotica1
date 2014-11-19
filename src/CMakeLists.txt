@@ -12,8 +12,7 @@ INCLUDE ( CMakeListsSpecific.txt)
 SET ( SOURCES
   ${SOURCES}
   navegacioncomp.cpp
-  apriltagsI.cpp
-
+  
   genericmonitor.cpp
   commonbehaviorI.cpp
   genericworker.cpp
@@ -24,15 +23,14 @@ SET ( SOURCES
 # Headers set
 SET ( HEADERS
   ${HEADERS}
-  apriltagsI.h
-
+  
   genericmonitor.h
   commonbehaviorI.h
   genericworker.h
 )
 #ROBOCOMP
 ROBOCOMP_INITIALIZE( $ENV{ROBOCOMP}/ )
-ROBOCOMP_WRAP_ICE( CommonBehavior  AprilTags Laser DifferentialRobot  JointMotor)
+ROBOCOMP_WRAP_ICE( CommonBehavior  Laser DifferentialRobot JointMotor GetAprilTags  BodyInverseKinematics)
 SET (EXECUTABLE_OUTPUT_PATH ../bin)
 
 # Qt4

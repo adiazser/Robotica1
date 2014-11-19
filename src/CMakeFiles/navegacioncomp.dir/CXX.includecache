@@ -6,26 +6,26 @@
 
 #IncludeRegexTransform: 
 
-/home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp
-specificworker.h
-/home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
-qt4/QtCore/QDate
--
-
-/home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
-genericworker.h
--
-qmat/QMatAll
--
-innermodel/innermodel.h
--
-
 /home/salabeta/robocomp/classes/qlog/qlog.h
 QtCore
 -
 iostream
 -
 Logger.h
+-
+
+/home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp
+specificworker.h
+/home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
+qt4/QtCore/QDate
+-
+
+/home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
+genericworker.h
+-
+qmat/QMatAll
+-
+innermodel/innermodel.h
 -
 
 /opt/robocomp/include/innermodel/innermodel.h
@@ -3956,7 +3956,7 @@ QtGui/qwidget.h
 QtGui/qwidget.h
 -
 
-src/AprilTags.h
+src/BodyInverseKinematics.h
 Ice/ProxyF.h
 -
 Ice/ObjectF.h
@@ -3978,6 +3978,8 @@ Ice/OutgoingAsync.h
 Ice/Incoming.h
 -
 Ice/Direct.h
+-
+Ice/FactoryTableInit.h
 -
 IceUtil/ScopedArray.h
 -
@@ -4044,6 +4046,38 @@ Ice/Incoming.h
 Ice/Direct.h
 -
 Ice/FactoryTableInit.h
+-
+IceUtil/ScopedArray.h
+-
+IceUtil/Optional.h
+-
+Ice/StreamF.h
+-
+Ice/UndefSysMacros.h
+-
+
+src/GetAprilTags.h
+Ice/ProxyF.h
+-
+Ice/ObjectF.h
+-
+Ice/Exception.h
+-
+Ice/LocalObject.h
+-
+Ice/StreamHelpers.h
+-
+Ice/Proxy.h
+-
+Ice/Object.h
+-
+Ice/Outgoing.h
+-
+Ice/OutgoingAsync.h
+-
+Ice/Incoming.h
+-
+Ice/Direct.h
 -
 IceUtil/ScopedArray.h
 -
@@ -4143,6 +4177,8 @@ JointMotor.h
 -
 DifferentialRobot.h
 -
-AprilTags.h
+GetAprilTags.h
+-
+BodyInverseKinematics.h
 -
 
