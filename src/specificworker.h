@@ -32,7 +32,7 @@ class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 
-enum class STATE {CC, R, IR, P, AM, O, IDLE};
+enum class STATE {CC, R, IR, P, AM, O, BB, AC,IDLE};
 //enum class STATE {CC, C, R,IR, P, AM, O, IDLE};
 STATE S;
 QTime T;
@@ -52,13 +52,13 @@ float angulochoque;
 struct tag
 {
   int id;
-  float tx,ty,tz,ry;	
+  float tx,ty,tz,ry,rz;	
   tag(){};
-    tag( int id_, float tx_, float ty_, float tz_, float ry_)
+    tag( int id_, float tx_, float ty_, float tz_, float ry_, float rz_)
   {
-      tx = tx_*1000; ty = ty_*1000; tz = tz_*1000; ry = ry_; id = id_;
+      tx = tx_*1000; ty = ty_*1000; tz = tz_*1000; ry = ry_; id = id_; rz=rz_;
       pose.resize(6);
-      pose[0] = tx;     pose[1] = ty;     pose[2] = tz;     pose[3] = 0;     pose[4] = ry;     pose[5] = 0;
+      pose[0] = tx;     pose[1] = ty;     pose[2] = tz;     pose[3] = 0;     pose[4] = ry;     pose[5] = rz;
   }
   QVec getPose()
   {
@@ -80,7 +80,7 @@ struct tagslocalT
     tags.clear();
     for(auto i: t)
     {
-      tag myT(i.id, i.tx, i.ty, i.tz, i.ry);
+      tag myT(i.id, i.tx, i.ty, i.tz, i.ry, i.rz);
       tags.push_back(myT);
     }
     
@@ -127,6 +127,10 @@ private:
 	TPose poseCoger;
 	void ponerBrazo( const TPose &listaPose );
 	void cogerCaja();
+	void bajarBrazo();
+	void agarrarCaja();
+	void pasarCajaAMano();
+	void pasarCajaASuelo();
 	
 public:
 	SpecificWorker(MapPrx& mprx, QObject *parent = 0);	

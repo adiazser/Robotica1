@@ -26,6 +26,7 @@
 #include <qlog/qlog.h>
 #include <CommonBehavior.h>
 #include <Laser.h>
+#include <InnerModelManager.h>
 #include <JointMotor.h>
 #include <DifferentialRobot.h>
 #include <GetAprilTags.h>
@@ -43,6 +44,7 @@ using namespace std;
        @author authorname
 */
 using namespace RoboCompLaser;
+using namespace RoboCompInnerModelManager;
 using namespace RoboCompJointMotor;
 using namespace RoboCompDifferentialRobot;
 using namespace RoboCompGetAprilTags;
@@ -61,6 +63,7 @@ public:
 	QMutex *mutex;                //Shared mutex with servant
 
 	LaserPrx laser_proxy;
+	InnerModelManagerPrx innermodelmanager_proxy;
 	JointMotorPrx jointmotor_proxy;
 	DifferentialRobotPrx differentialrobot_proxy;
 	GetAprilTagsPrx getapriltags0_proxy;

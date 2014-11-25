@@ -9,6 +9,7 @@ CommonBehavior.Endpoints=tcp -p 11266
 #RemoteProxy = remote:tcp -h remotehost -p 10001
 
 LaserProxy = laser:tcp -h localhost -p 10003
+InnerModelManagerProxy = innermodelmanager:tcp -h localhost -p 11175
 JointMotorProxy = jointmotor:tcp -h localhost -p 10067
 DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 10004
 GetAprilTags0Proxy = getapriltags:tcp -h localhost -p 12209

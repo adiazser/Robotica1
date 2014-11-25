@@ -18,8 +18,9 @@
  */
  
  #include "specificworker.h"
+#include </home/salabeta/robocomp/components/robocomp-robolab/components/apriltagsComp/src/specificworker.h>
 #include <qt4/QtCore/QDate>
-
+ 
 /**
 * \brief Default constructor
 */
@@ -28,10 +29,8 @@ SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mp
 {
   
   S=STATE::IR;
-  inner = new InnerModel("/home/salabeta/robocomp/files/innermodel/betaWorld2.xml");
+  inner = new InnerModel("/home/salabeta/robocomp/files/innermodel/betaWorld.xml");
   T.restart();
-  
- 
   
   poseAndar.push_back(std::make_pair<std::string,float>("shoulder_right_1", 3));
   poseAndar.push_back(std::make_pair<std::string,float>("elbow_right", 1)); 
@@ -70,7 +69,7 @@ void SpecificWorker::compute( )
     differentialrobot_proxy->getBaseState(basestate);
     laserdata = laser_proxy->getLaserData();
   }
-  catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
+  catch(const Ice::Exception &e){ std::cout<< "en diff" <<e<<std::endl; }
   inner->updateTransformValues("robot", basestate.x,0,basestate.z, 0, basestate.alpha,0);
   
   
@@ -81,7 +80,7 @@ void SpecificWorker::compute( )
     tagslocal1.update(getapriltags1_proxy->checkMarcas());    
     //tagslocal1.print();
   }
-  catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
+  catch(const Ice::Exception &e){std::cout<< "error en april " <<e<<std::endl; }
   
   /* try
   {
@@ -120,6 +119,12 @@ void SpecificWorker::compute( )
     case STATE::CC:
        cogerCaja();
        break;
+	case STATE::BB:
+		bajarBrazo();
+		break;
+	case STATE::AC:
+		 agarrarCaja();
+		 break;
     case STATE::IDLE:
       break;
   }
@@ -364,11 +369,112 @@ void SpecificWorker::cogerCaja()
     }
     else
     {      
-     S=STATE::IDLE; 
+	  if(fabs(t.rz)!=0){
+		   qDebug() << "Regulando Angulo";
+		MotorGoalPosition posicion;
+		try 
+		{
+			posicion.name = "wrist_right_giro";
+			posicion.position = t.rz;
+			posicion.maxSpeed = 1.f;
+			jointmotor_proxy->setPosition(posicion);
+			sleep(1);
+			  S=STATE::BB; 
+		}catch(Ice::Exception &ex){std::cout << ex << std::cout;}
+	  }
     }
   }
 }
 
+void SpecificWorker::bajarBrazo()
+{
+	//moverBrazo(0,0,1,(datosMarcaBrazo.getPos()[2]-200));
+	 qDebug()<<__FUNCTION__;
+	 tag t;
+	 if(tagslocal1.existsId(10,t) )
+	{	
+		Axis ax;
+		ax.x= 0; 
+		ax.y= 0;
+		ax.z= 1;
+		qDebug() << "enviado al brazo en Z";
+		bodyinversekinematics_proxy->advanceAlongAxis("ARM", ax, t.tz-200);
+		sleep(2);
+		S=STATE::AC;
+	}
+}
+
+void SpecificWorker::agarrarCaja()
+{
+	qDebug()<<__FUNCTION__;
+	/*try{
+		bodyinversekinematics_proxy->setFingers(90.0f);
+	}
+	catch( const Ice::Exception &ex)
+	{ std::cout << ex << std::endl;}
+	sleep(1);
+	caja = marcaBusco;
+	//posicionBrazo(cerrarMano);
+	dibujarCaja();
+	posicionBrazo(subirCaja);
+	sleep(2);
+	posicionBrazo(guardoCaja);
+	sleep(2);
+	marcaBusco = 3;
+	estado = STATE::CJGIRAR;
+	*/
+	
+}
+
+//caja es el id (string) de la caja que se va a mover. Las cajas se llaman: "C10" "C11" etc
+void SpecificWorker::pasarCajaAMano()
+{
+    try{
+        QString marca = "C" + QString::number(10,10);
+        string marcaString = marca.toStdString();
+        innermodelmanager_proxy->removeNode(marcaString);
+        Pose3D posCaja;
+        posCaja.x = -25; posCaja.y = 0; posCaja.z = 80; posCaja.rx = 0; posCaja.ry = 0; posCaja.rz = 0;
+        innermodelmanager_proxy->addTransform(marcaString, "static", "arm_right_7", posCaja);
+        Plane3D planoCaja;
+        planoCaja.px = 0; planoCaja.py = 0; planoCaja.pz = 0; planoCaja.nx = 0; planoCaja.ny = 0; planoCaja.nz = 0;
+        planoCaja.width = 100; planoCaja.height =100; planoCaja.thickness = 100;
+        QString textura = "/home/robocomp/robocomp/files/innermodel/tar36h11-"+QString::number(10,10)+".png";
+        string texturaString = textura.toStdString();
+        planoCaja.texture = texturaString;
+        QString marcaPlano = "Plano" + marca;
+        string marcaPlanoString = marcaPlano.toStdString();
+        innermodelmanager_proxy->addPlane(marcaPlanoString, marcaString, planoCaja);
+    }
+    catch (Ice::Exception &ex)
+    {std::cout << ex << std::cout;}
+}
+
+// El vector suelo se saca de la siguiente transformación 'vectorSuelo = inner->transform("world", "arm_right_7");'
+
+void SpecificWorker::pasarCajaASuelo()
+{
+    try{
+        QString cajaCogida = "C" + QString::number(10,10);
+        string cajaCogidaString = cajaCogida.toStdString();
+        innermodelmanager_proxy->removeNode(cajaCogidaString);
+        Pose3D posCaja;
+		QVec vectorSuelo = inner->transform("floor","C10");
+        posCaja.x = vectorSuelo[0]; posCaja.y = 50; posCaja.z = vectorSuelo[2]; posCaja.rx = 0; posCaja.ry = 0; posCaja.rz = 0;
+        innermodelmanager_proxy->addTransform(cajaCogidaString, "static", "world", posCaja);
+        Plane3D planoCaja;
+        planoCaja.px = 0; planoCaja.py = 0; planoCaja.pz = 0; planoCaja.nx = 0; planoCaja.ny = 0; planoCaja.nz = 0;
+        planoCaja.width = 100; planoCaja.height =100; planoCaja.thickness = 100;
+        QString textura = "/home/robocomp/robocomp/files/innermodel/tar36h11-"+QString::number(10,10)+".png";
+        string texturaString = textura.toStdString();
+        planoCaja.texture = texturaString;
+        QString cajaCogidaPlano = "Plano" + cajaCogida;
+        string cajaCogidaPlanoString = cajaCogidaPlano.toStdString();
+        innermodelmanager_proxy->addPlane(cajaCogidaPlanoString, cajaCogidaString, planoCaja);
+    }
+    catch (Ice::Exception &ex)
+    {std::cout << ex << std::cout;}
+}
 
 void SpecificWorker::addTransformInnerModel(const QString &name, const QString &parent, const QVec &pose6D)
 {
@@ -396,7 +502,7 @@ QVec SpecificWorker::fuerzasRepulsion()
       {
 	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
 	float mod = fuerza.norm2();
-	if (i.dist < 1000){
+	if (i.dist < 800){
 	  expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
 	}
 	

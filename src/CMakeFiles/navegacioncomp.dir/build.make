@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/salabeta/robocomp/components/grupo1alexjaime/navegacion
+CMAKE_SOURCE_DIR = /home/robocomp/robocomp/components/grupo1alexjaime/navegacion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/salabeta/robocomp/components/grupo1alexjaime/navegacion
+CMAKE_BINARY_DIR = /home/robocomp/robocomp/components/grupo1alexjaime/navegacion
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/navegacioncomp.dir/depend.make
@@ -53,85 +53,92 @@ include src/CMakeFiles/navegacioncomp.dir/progress.make
 include src/CMakeFiles/navegacioncomp.dir/flags.make
 
 src/CommonBehavior.cpp: /home/salabeta/robocomp/interfaces/CommonBehavior.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating CommonBehavior.cpp and CommonBehavior.h from CommonBehavior.ice"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//CommonBehavior.ice --output-dir .
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//CommonBehavior.ice --output-dir .
 
 src/CommonBehavior.h: src/CommonBehavior.cpp
 
 src/Laser.cpp: /home/salabeta/robocomp/interfaces/Laser.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_2)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_2)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating Laser.cpp and Laser.h from Laser.ice"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//Laser.ice --output-dir .
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//Laser.ice --output-dir .
 
 src/Laser.h: src/Laser.cpp
 
 src/DifferentialRobot.cpp: /home/salabeta/robocomp/interfaces/DifferentialRobot.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_3)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_3)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating DifferentialRobot.cpp and DifferentialRobot.h from DifferentialRobot.ice"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//DifferentialRobot.ice --output-dir .
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//DifferentialRobot.ice --output-dir .
 
 src/DifferentialRobot.h: src/DifferentialRobot.cpp
 
 src/JointMotor.cpp: /home/salabeta/robocomp/interfaces/JointMotor.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_4)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_4)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating JointMotor.cpp and JointMotor.h from JointMotor.ice"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//JointMotor.ice --output-dir .
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//JointMotor.ice --output-dir .
 
 src/JointMotor.h: src/JointMotor.cpp
 
 src/GetAprilTags.cpp: /home/salabeta/robocomp/interfaces/GetAprilTags.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_5)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_5)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating GetAprilTags.cpp and GetAprilTags.h from GetAprilTags.ice"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//GetAprilTags.ice --output-dir .
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//GetAprilTags.ice --output-dir .
 
 src/GetAprilTags.h: src/GetAprilTags.cpp
 
 src/BodyInverseKinematics.cpp: /home/salabeta/robocomp/interfaces/BodyInverseKinematics.ice
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_6)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_6)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating BodyInverseKinematics.cpp and BodyInverseKinematics.h from BodyInverseKinematics.ice"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//BodyInverseKinematics.ice --output-dir .
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//BodyInverseKinematics.ice --output-dir .
 
 src/BodyInverseKinematics.h: src/BodyInverseKinematics.cpp
 
+src/InnerModelManager.cpp: /home/salabeta/robocomp/interfaces/InnerModelManager.ice
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_7)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating InnerModelManager.cpp and InnerModelManager.h from InnerModelManager.ice"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/ThirdPartyinterfaces -I. /home/salabeta/robocomp//interfaces//InnerModelManager.ice --output-dir .
+
+src/InnerModelManager.h: src/InnerModelManager.cpp
+
 src/moc_specificworker.cxx: src/specificworker.h
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_7)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_8)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_specificworker.cxx"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx_parameters
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx_parameters
 
 src/moc_specificmonitor.cxx: src/specificmonitor.h
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_8)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_9)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_specificmonitor.cxx"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificmonitor.cxx_parameters
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificmonitor.cxx_parameters
 
 src/moc_genericmonitor.cxx: src/genericmonitor.h
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_9)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_10)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_genericmonitor.cxx"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericmonitor.cxx_parameters
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericmonitor.cxx_parameters
 
 src/moc_commonbehaviorI.cxx: src/commonbehaviorI.h
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_10)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_11)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_commonbehaviorI.cxx"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_commonbehaviorI.cxx_parameters
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_commonbehaviorI.cxx_parameters
 
 src/moc_genericworker.cxx: src/genericworker.h
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_11)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_12)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Generating moc_genericworker.cxx"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericworker.cxx_parameters
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/lib/x86_64-linux-gnu/qt4/bin/moc @/home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericworker.cxx_parameters
 
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: src/specificworker.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_12)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_13)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/specificworker.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/specificworker.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp
 
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/specificworker.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp > CMakeFiles/navegacioncomp.dir/specificworker.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp > CMakeFiles/navegacioncomp.dir/specificworker.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/specificworker.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp -o CMakeFiles/navegacioncomp.dir/specificworker.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp -o CMakeFiles/navegacioncomp.dir/specificworker.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o.requires
@@ -144,17 +151,17 @@ src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o.provides.build: src/CMake
 
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/specificmonitor.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_13)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_14)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.cpp
 
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.cpp > CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.cpp > CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.cpp -o CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificmonitor.cpp -o CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o.requires
@@ -167,17 +174,17 @@ src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/navegacioncomp.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_14)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_15)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/navegacioncomp.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/navegacioncomp.cpp
 
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/navegacioncomp.cpp > CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/navegacioncomp.cpp > CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/navegacioncomp.cpp -o CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/navegacioncomp.cpp -o CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o.requires
@@ -190,17 +197,17 @@ src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o.provides.build: src/CMake
 
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/genericmonitor.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_15)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_16)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.cpp
 
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.cpp > CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.cpp > CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.cpp -o CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.cpp -o CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o.requires
@@ -213,17 +220,17 @@ src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o.provides.build: src/CMake
 
 src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o: src/commonbehaviorI.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_16)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_17)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/commonbehaviorI.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/commonbehaviorI.cpp
 
 src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/commonbehaviorI.cpp > CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/commonbehaviorI.cpp > CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/commonbehaviorI.cpp -o CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/commonbehaviorI.cpp -o CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o.requires
@@ -236,17 +243,17 @@ src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o.provides.build: src/CMak
 
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/genericworker.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_17)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_18)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/genericworker.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/genericworker.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/genericworker.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericworker.cpp
 
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/genericworker.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/genericworker.cpp > CMakeFiles/navegacioncomp.dir/genericworker.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericworker.cpp > CMakeFiles/navegacioncomp.dir/genericworker.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/genericworker.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/genericworker.cpp -o CMakeFiles/navegacioncomp.dir/genericworker.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericworker.cpp -o CMakeFiles/navegacioncomp.dir/genericworker.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o.requires
@@ -257,65 +264,65 @@ src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o.provides: src/CMakeFiles/n
 
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o.provides.build: src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o: /home/salabeta/robocomp/classes/rapplication/rapplication.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_18)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o -c /home/salabeta/robocomp/classes/rapplication/rapplication.cpp
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o: /home/robocomp/robocomp/classes/rapplication/rapplication.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_19)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o -c /home/robocomp/robocomp/classes/rapplication/rapplication.cpp
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/classes/rapplication/rapplication.cpp > CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.i"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/classes/rapplication/rapplication.cpp > CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.i
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/classes/rapplication/rapplication.cpp -o CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.s"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/classes/rapplication/rapplication.cpp -o CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.s
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.requires:
-.PHONY : src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.requires
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o.requires:
+.PHONY : src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o.requires
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.provides: src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.provides.build
-.PHONY : src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.provides
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o.provides: src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o.provides.build
+.PHONY : src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o.provides
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.provides.build: src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o.provides.build: src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o: /home/salabeta/robocomp/classes/qlog/qlog.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_19)
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o -c /home/salabeta/robocomp/classes/qlog/qlog.cpp
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o: /home/robocomp/robocomp/classes/qlog/qlog.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_20)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o -c /home/robocomp/robocomp/classes/qlog/qlog.cpp
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/classes/qlog/qlog.cpp > CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.i
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.i"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/classes/qlog/qlog.cpp > CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.i
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/classes/qlog/qlog.cpp -o CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.s
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.s"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/classes/qlog/qlog.cpp -o CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.s
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.requires:
-.PHONY : src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.requires
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.requires:
+.PHONY : src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.requires
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.provides: src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.provides.build
-.PHONY : src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.provides
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.provides: src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.provides.build
+.PHONY : src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.provides
 
-src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.provides.build: src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o
+src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.provides.build: src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o
 
 src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o: src/CommonBehavior.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_20)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_21)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/CommonBehavior.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/CommonBehavior.cpp
 
 src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/CommonBehavior.cpp > CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/CommonBehavior.cpp > CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/CommonBehavior.cpp -o CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/CommonBehavior.cpp -o CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o.requires
@@ -328,17 +335,17 @@ src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o.provides.build: src/CMake
 
 src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o: src/Laser.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_21)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_22)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/Laser.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/Laser.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/Laser.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/Laser.cpp
 
 src/CMakeFiles/navegacioncomp.dir/Laser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/Laser.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/Laser.cpp > CMakeFiles/navegacioncomp.dir/Laser.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/Laser.cpp > CMakeFiles/navegacioncomp.dir/Laser.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/Laser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/Laser.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/Laser.cpp -o CMakeFiles/navegacioncomp.dir/Laser.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/Laser.cpp -o CMakeFiles/navegacioncomp.dir/Laser.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o.requires
@@ -351,17 +358,17 @@ src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o.provides.build: src/CMakeFiles/nav
 
 src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o: src/DifferentialRobot.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_22)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_23)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/DifferentialRobot.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/DifferentialRobot.cpp
 
 src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/DifferentialRobot.cpp > CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/DifferentialRobot.cpp > CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/DifferentialRobot.cpp -o CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/DifferentialRobot.cpp -o CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o.requires
@@ -374,17 +381,17 @@ src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o.provides.build: src/CM
 
 src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o: src/JointMotor.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_23)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_24)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/JointMotor.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/JointMotor.cpp
 
 src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/JointMotor.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/JointMotor.cpp > CMakeFiles/navegacioncomp.dir/JointMotor.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/JointMotor.cpp > CMakeFiles/navegacioncomp.dir/JointMotor.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/JointMotor.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/JointMotor.cpp -o CMakeFiles/navegacioncomp.dir/JointMotor.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/JointMotor.cpp -o CMakeFiles/navegacioncomp.dir/JointMotor.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o.requires
@@ -397,17 +404,17 @@ src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o.provides.build: src/CMakeFile
 
 src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o: src/GetAprilTags.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_24)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_25)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/GetAprilTags.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/GetAprilTags.cpp
 
 src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/GetAprilTags.cpp > CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/GetAprilTags.cpp > CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/GetAprilTags.cpp -o CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/GetAprilTags.cpp -o CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o.requires
@@ -420,17 +427,17 @@ src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o.provides.build: src/CMakeFi
 
 src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o: src/BodyInverseKinematics.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_25)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_26)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/BodyInverseKinematics.cpp
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/BodyInverseKinematics.cpp
 
 src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/BodyInverseKinematics.cpp > CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/BodyInverseKinematics.cpp > CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.i
 
 src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/BodyInverseKinematics.cpp -o CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/BodyInverseKinematics.cpp -o CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.s
 
 src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o.requires
@@ -441,19 +448,42 @@ src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o.provides: src/CMak
 
 src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o.provides.build: src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o
 
+src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o: src/CMakeFiles/navegacioncomp.dir/flags.make
+src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o: src/InnerModelManager.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_27)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/InnerModelManager.cpp
+
+src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.i"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/InnerModelManager.cpp > CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.i
+
+src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.s"
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/InnerModelManager.cpp -o CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.s
+
+src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o.requires:
+.PHONY : src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o.requires
+
+src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o.provides: src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/navegacioncomp.dir/build.make src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o.provides.build
+.PHONY : src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o.provides
+
+src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o.provides.build: src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o
+
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: src/moc_specificworker.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_26)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_28)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx > CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx > CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.i
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx -o CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx -o CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.s
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o.requires
@@ -466,17 +496,17 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o.provides.build: src/C
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/moc_specificmonitor.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_27)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_29)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificmonitor.cxx
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificmonitor.cxx
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificmonitor.cxx > CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificmonitor.cxx > CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.i
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificmonitor.cxx -o CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificmonitor.cxx -o CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.s
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o.requires
@@ -489,17 +519,17 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o.provides.build: src/
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/moc_genericmonitor.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_28)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_30)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericmonitor.cxx
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericmonitor.cxx
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericmonitor.cxx > CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericmonitor.cxx > CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.i
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericmonitor.cxx -o CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericmonitor.cxx -o CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.s
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o.requires
@@ -512,17 +542,17 @@ src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o.provides.build: src/C
 
 src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o: src/moc_commonbehaviorI.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_29)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_31)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_commonbehaviorI.cxx
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_commonbehaviorI.cxx
 
 src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_commonbehaviorI.cxx > CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_commonbehaviorI.cxx > CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.i
 
 src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_commonbehaviorI.cxx -o CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_commonbehaviorI.cxx -o CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.s
 
 src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o.requires
@@ -535,17 +565,17 @@ src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o.provides.build: src/
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/CMakeFiles/navegacioncomp.dir/flags.make
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/moc_genericworker.cxx
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_30)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles $(CMAKE_PROGRESS_32)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o -c /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericworker.cxx
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o -c /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericworker.cxx
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.i"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericworker.cxx > CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.i
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericworker.cxx > CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.i
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.s"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericworker.cxx -o CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.s
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_genericworker.cxx -o CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.s
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o.requires:
 .PHONY : src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o.requires
@@ -564,14 +594,15 @@ navegacioncomp_OBJECTS = \
 "CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/genericworker.cpp.o" \
-"CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o" \
-"CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o" \
+"CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o" \
+"CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/Laser.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o" \
+"CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o" \
 "CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o" \
 "CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o" \
 "CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o" \
@@ -587,14 +618,15 @@ bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o
-bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
-bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o
+bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o
+bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o
+bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o
@@ -611,7 +643,7 @@ bin/navegacioncomp: /usr/lib/x86_64-linux-gnu/libQtXml.so
 bin/navegacioncomp: /usr/lib/x86_64-linux-gnu/libQtCore.so
 bin/navegacioncomp: src/CMakeFiles/navegacioncomp.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable ../bin/navegacioncomp"
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/navegacioncomp.dir/link.txt --verbose=$(VERBOSE)
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/navegacioncomp.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/navegacioncomp.dir/build: bin/navegacioncomp
@@ -623,14 +655,15 @@ src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/na
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o.requires
-src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.requires
-src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.requires
+src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o.requires
+src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/CommonBehavior.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/Laser.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/DifferentialRobot.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/JointMotor.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/GetAprilTags.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/BodyInverseKinematics.cpp.o.requires
+src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/InnerModelManager.cpp.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o.requires
 src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o.requires
@@ -639,7 +672,7 @@ src/CMakeFiles/navegacioncomp.dir/requires: src/CMakeFiles/navegacioncomp.dir/mo
 .PHONY : src/CMakeFiles/navegacioncomp.dir/requires
 
 src/CMakeFiles/navegacioncomp.dir/clean:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src && $(CMAKE_COMMAND) -P CMakeFiles/navegacioncomp.dir/cmake_clean.cmake
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src && $(CMAKE_COMMAND) -P CMakeFiles/navegacioncomp.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/navegacioncomp.dir/clean
 
 src/CMakeFiles/navegacioncomp.dir/depend: src/CommonBehavior.cpp
@@ -654,11 +687,13 @@ src/CMakeFiles/navegacioncomp.dir/depend: src/GetAprilTags.cpp
 src/CMakeFiles/navegacioncomp.dir/depend: src/GetAprilTags.h
 src/CMakeFiles/navegacioncomp.dir/depend: src/BodyInverseKinematics.cpp
 src/CMakeFiles/navegacioncomp.dir/depend: src/BodyInverseKinematics.h
+src/CMakeFiles/navegacioncomp.dir/depend: src/InnerModelManager.cpp
+src/CMakeFiles/navegacioncomp.dir/depend: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/depend: src/moc_specificworker.cxx
 src/CMakeFiles/navegacioncomp.dir/depend: src/moc_specificmonitor.cxx
 src/CMakeFiles/navegacioncomp.dir/depend: src/moc_genericmonitor.cxx
 src/CMakeFiles/navegacioncomp.dir/depend: src/moc_commonbehaviorI.cxx
 src/CMakeFiles/navegacioncomp.dir/depend: src/moc_genericworker.cxx
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/salabeta/robocomp/components/grupo1alexjaime/navegacion /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src /home/salabeta/robocomp/components/grupo1alexjaime/navegacion /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/src/CMakeFiles/navegacioncomp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robocomp/robocomp/components/grupo1alexjaime/navegacion /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src /home/robocomp/robocomp/components/grupo1alexjaime/navegacion /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/CMakeFiles/navegacioncomp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/navegacioncomp.dir/depend
 

@@ -30,7 +30,7 @@ SET ( HEADERS
 )
 #ROBOCOMP
 ROBOCOMP_INITIALIZE( $ENV{ROBOCOMP}/ )
-ROBOCOMP_WRAP_ICE( CommonBehavior  Laser DifferentialRobot JointMotor GetAprilTags  BodyInverseKinematics)
+ROBOCOMP_WRAP_ICE( CommonBehavior  Laser DifferentialRobot JointMotor GetAprilTags BodyInverseKinematics  InnerModelManager)
 SET (EXECUTABLE_OUTPUT_PATH ../bin)
 
 # Qt4

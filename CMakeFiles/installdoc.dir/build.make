@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/cmake-gui
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/salabeta/robocomp/components/grupo1alexjaime/navegacion
+CMAKE_SOURCE_DIR = /home/robocomp/robocomp/components/grupo1alexjaime/navegacion
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/salabeta/robocomp/components/grupo1alexjaime/navegacion
+CMAKE_BINARY_DIR = /home/robocomp/robocomp/components/grupo1alexjaime/navegacion
 
 # Utility rule file for installdoc.
 
@@ -65,6 +65,6 @@ CMakeFiles/installdoc.dir/clean:
 .PHONY : CMakeFiles/installdoc.dir/clean
 
 CMakeFiles/installdoc.dir/depend:
-	cd /home/salabeta/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/salabeta/robocomp/components/grupo1alexjaime/navegacion /home/salabeta/robocomp/components/grupo1alexjaime/navegacion /home/salabeta/robocomp/components/grupo1alexjaime/navegacion /home/salabeta/robocomp/components/grupo1alexjaime/navegacion /home/salabeta/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles/installdoc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/robocomp/robocomp/components/grupo1alexjaime/navegacion /home/robocomp/robocomp/components/grupo1alexjaime/navegacion /home/robocomp/robocomp/components/grupo1alexjaime/navegacion /home/robocomp/robocomp/components/grupo1alexjaime/navegacion /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/CMakeFiles/installdoc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/installdoc.dir/depend
 
