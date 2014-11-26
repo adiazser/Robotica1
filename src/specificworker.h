@@ -32,7 +32,7 @@ class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 
-enum class STATE {CC, R, IR, P, AM, O, BB, AC,IDLE};
+enum class STATE {CC, R, IR, P, AM, O, BB, AC, SC ,IDLE};
 //enum class STATE {CC, C, R,IR, P, AM, O, IDLE};
 STATE S;
 QTime T;
@@ -41,6 +41,7 @@ bool rotando=false;
 bool marencontrada=false;
 bool puntoencontrado=false;
 bool enmarca=false;
+int numMarca;
 QVec marca;
 QVec prm;
 TBaseState basestate;
@@ -123,12 +124,15 @@ private:
 	
 	typedef std::pair<std::string, float> Tp;
 	typedef std::vector<Tp> TPose;
-	TPose poseAndar;
 	TPose poseCoger;
+	TPose poseCaja;
+	TPose poseChepa;
+	TPose soltando;
 	void ponerBrazo( const TPose &listaPose );
 	void cogerCaja();
 	void bajarBrazo();
 	void agarrarCaja();
+	void soltarCaja();
 	void pasarCajaAMano();
 	void pasarCajaASuelo();
 	

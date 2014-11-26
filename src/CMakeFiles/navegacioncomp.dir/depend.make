@@ -4295,6 +4295,8 @@ src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/Laser.h
+src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/config.h
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/genericmonitor.h

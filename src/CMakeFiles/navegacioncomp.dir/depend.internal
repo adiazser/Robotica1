@@ -4296,6 +4296,8 @@ src/CMakeFiles/navegacioncomp.dir/navegacioncomp.cpp.o
  src/InnerModelManager.h
  src/JointMotor.h
  src/Laser.h
+ src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/config.h
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.h

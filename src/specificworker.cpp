@@ -31,11 +31,7 @@ SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mp
   S=STATE::IR;
   inner = new InnerModel("/home/salabeta/robocomp/files/innermodel/betaWorld.xml");
   T.restart();
-  
-  poseAndar.push_back(std::make_pair<std::string,float>("shoulder_right_1", 3));
-  poseAndar.push_back(std::make_pair<std::string,float>("elbow_right", 1)); 
-  poseAndar.push_back(std::make_pair<std::string,float>("wrist_right_2", 1.1));
-  poseAndar.push_back(std::make_pair<std::string,float>("wrist_right_giro", 0.0));
+  numMarca=10;
   
   poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_1", 0));
   poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_2", -0.7));
@@ -45,7 +41,25 @@ SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mp
   poseCoger.push_back(std::make_pair<std::string,float>("finger_right_1", 0.0));
   poseCoger.push_back(std::make_pair<std::string,float>("finger_right_2", 0.0));
   
-  ponerBrazo( poseAndar );
+  
+  poseCaja.push_back(std::make_pair<std::string, float>("shoulder_right_1", 0));
+  poseCaja.push_back(std::make_pair<std::string, float>("shoulder_right_2", -0.7));
+  poseCaja.push_back(std::make_pair<std::string,float>("elbow_right", 1));
+  poseCaja.push_back(std::make_pair<std::string, float>("wrist_right_2", 1.3));
+  poseCaja.push_back(std::make_pair<std::string, float>("wrist_right_giro", 0));
+  
+  poseChepa.push_back(std::make_pair<std::string, float>("shoulder_right_1", 3));
+  poseChepa.push_back(std::make_pair<std::string, float>("shoulder_right_2", -0.7));
+  poseChepa.push_back(std::make_pair<std::string,float>("elbow_right", 1));
+  poseChepa.push_back(std::make_pair<std::string, float>("wrist_right_2", 1.3));
+  poseChepa.push_back(std::make_pair<std::string, float>("wrist_right_giro", 0));
+  
+  
+	soltando.push_back(std::make_pair<std::string, float>("finger_right_1", 0));
+	soltando.push_back(std::make_pair<std::string, float>("finger_right_2", 0));
+  
+  
+  ponerBrazo( poseChepa );
   timer.start(Period);
   
   //S=STATE::IDLE;
@@ -125,6 +139,9 @@ void SpecificWorker::compute( )
 	case STATE::AC:
 		 agarrarCaja();
 		 break;
+	case STATE::SC:
+		soltarCaja();
+		break;
     case STATE::IDLE:
       break;
   }
@@ -200,7 +217,7 @@ void SpecificWorker::iniciarrotar()
 bool SpecificWorker::rotar()
 {
   tag t;
-  if(tagslocal0.existsId(10,t))
+  if(tagslocal0.existsId(numMarca,t))
   {
     S=STATE::P;
     if(enmarca==false){
@@ -220,7 +237,8 @@ void SpecificWorker::parar()
 {
   qDebug()<<__FUNCTION__;
   differentialrobot_proxy->setSpeedBase(0,0);
-  ponerBrazo( poseCoger );
+  if(numMarca>=10)
+	 ponerBrazo( poseCoger );
   if(marencontrada==true){
     S=STATE::AM;
   }
@@ -238,25 +256,34 @@ bool SpecificWorker::avanzarMarca()
   QVec r2(3);
   QVec imagine;
   
-  if(tagslocal0.existsId(10,t) && tagslocal1.existsId(10 , t) ){
+  if(tagslocal0.existsId(numMarca,t) && tagslocal1.existsId(numMarca , t) ){
     	S=STATE::P;
 	marencontrada=false;
 	enmarca=true;
     return true;
   }
-  else if(tagslocal1.existsId(10, t)){
+  else if(tagslocal1.existsId(numMarca, t)){
     	S=STATE::P;
 	marencontrada=false;
 	enmarca=true;
     return true;
   }
-  else if(tagslocal0.existsId(10,t) )
+  else if(tagslocal0.existsId(numMarca,t) )
   {
+	   QVec punto(3);
+	  if(numMarca>=10){
       QVec punto(3);
       punto[0]=0;
       punto[1]=0;
       punto[2]=0;
-      
+	  }
+	  else{
+			QVec punto(3);
+			punto[0]=0;
+			punto[1]=0;
+			punto[2]=600;
+	  }
+	  
       addTransformInnerModel("marca-desde-camara", "camera", t.getPose());
       memory = inner->transform("world", punto, "marca-desde-camara");
       imagine= inner->transform("camera", punto, "marca-desde-camara");
@@ -307,13 +334,41 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
 
 }
 
+QVec SpecificWorker::fuerzasRepulsion()
+{
+
+  //qDebug()<<__FUNCTION__;
+  QVec fuerza;
+  QVec expulsion = QVec::zeros(2);
+  try{
+    
+    for(auto i: laserdata)
+    {
+      if (i.angle>-1.5 and i.angle< 1.5)
+      {
+	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
+	float mod = fuerza.norm2();
+	if (i.dist > 250 && i.dist < 800){
+	  expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
+	  if (i.dist < 580)
+		  expulsion= expulsion/ (float)1.5;
+	}
+	
+      }
+    }
+    
+  }catch(const Ice::Exception &e){
+      std::cout<<e<<std::endl;
+  }
+  return expulsion*100000;
+}
 
 void SpecificWorker::orientar()
 {
 
   qDebug()<<__FUNCTION__;
   tag t;
-  
+  qDebug()<< "HOLA";
       if(rotando==false){
 	if (angulochoque <0){
 	   angulochoque = 0.2;
@@ -324,22 +379,32 @@ void SpecificWorker::orientar()
 	  rotando=true;
 	}
       }
-  
+  qDebug()<< "NUMERO MARCA ORIENTAR" << numMarca;
   differentialrobot_proxy->setSpeedBase(0,angulochoque);
-  if(tagslocal1.existsId(10,t) )
+  //CAMBIAR EL METODO PARA QUE VAYA A OTRO QUE NO SEA ORIENTAR FALLA EL TAGSLOCAL QUE TENEMOS QUE PONER EL 0 NO EL 1
+  if(tagslocal1.existsId(numMarca,t) )
   {
    // qDebug()<< "TX" << t.tx;
-    if(t.tx<70 && t.tx>-70){
-      differentialrobot_proxy->setSpeedBase(0,0);
-      enmarca=false;
-      rotando=false;
-      //S=STATE::IDLE;
-      S=STATE::CC;
-    }
+	  qDebug()<< "NUMERO MARCA ORIENTAR" << numMarca;
+	  if(numMarca<10){
+		 differentialrobot_proxy->setSpeedBase(0,0);
+		 S=STATE::SC;
+	  }
+	  else{
+		if(t.tx<70 && t.tx>-70){
+		differentialrobot_proxy->setSpeedBase(0,0);
+		enmarca=false;
+		rotando=false;
+		//S=STATE::IDLE;
+			S=STATE::CC;
+		}
+	  }
     
   }
   
 }
+
+
 
 void SpecificWorker::cogerCaja()
 {
@@ -386,12 +451,38 @@ void SpecificWorker::cogerCaja()
   }
 }
 
+void SpecificWorker::soltarCaja()
+{
+
+  qDebug()<<__FUNCTION__;
+  tag t;
+  if(tagslocal1.existsId(numMarca,t) )
+  {
+	try{
+		Axis ax;
+		ax.x= 0; 
+		ax.y= 0;
+		ax.z= 1;
+		bodyinversekinematics_proxy->advanceAlongAxis("ARM", ax, t.tz-60);
+		sleep(1);
+		ponerBrazo(soltando);
+		pasarCajaASuelo();
+	}
+	catch( const Ice::Exception &ex)
+	{std::cout << ex << std::endl;}
+	qDebug() << "Dejo la caja";
+	sleep(2);
+	S = STATE::IDLE;
+  }
+}
+
+
 void SpecificWorker::bajarBrazo()
 {
 	//moverBrazo(0,0,1,(datosMarcaBrazo.getPos()[2]-200));
 	 qDebug()<<__FUNCTION__;
 	 tag t;
-	 if(tagslocal1.existsId(10,t) )
+	 if(tagslocal1.existsId(numMarca,t) )
 	{	
 		Axis ax;
 		ax.x= 0; 
@@ -404,25 +495,24 @@ void SpecificWorker::bajarBrazo()
 	}
 }
 
+
+
 void SpecificWorker::agarrarCaja()
 {
 	qDebug()<<__FUNCTION__;
-	/*try{
+	try{
 		bodyinversekinematics_proxy->setFingers(90.0f);
 	}
 	catch( const Ice::Exception &ex)
 	{ std::cout << ex << std::endl;}
 	sleep(1);
-	caja = marcaBusco;
-	//posicionBrazo(cerrarMano);
-	dibujarCaja();
-	posicionBrazo(subirCaja);
+	pasarCajaAMano();
+	ponerBrazo( poseCaja );
 	sleep(2);
-	posicionBrazo(guardoCaja);
+	ponerBrazo( poseChepa );
 	sleep(2);
-	marcaBusco = 3;
-	estado = STATE::CJGIRAR;
-	*/
+	numMarca=3;
+	S = STATE::IR;
 	
 }
 
@@ -487,33 +577,6 @@ void SpecificWorker::addTransformInnerModel(const QString &name, const QString &
 		inner->updateTransformValues(name, pose6D.x(), pose6D.y(), pose6D.z(), pose6D.rx(), pose6D.ry(), pose6D.rz());	
 }
 
- 
-QVec SpecificWorker::fuerzasRepulsion()
-{
-
-  //qDebug()<<__FUNCTION__;
-  QVec fuerza;
-  QVec expulsion = QVec::zeros(2);
-  try{
-    
-    for(auto i: laserdata)
-    {
-      if (i.angle>-1.5 and i.angle< 1.5)
-      {
-	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
-	float mod = fuerza.norm2();
-	if (i.dist < 800){
-	  expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
-	}
-	
-      }
-    }
-    
-  }catch(const Ice::Exception &e){
-      std::cout<<e<<std::endl;
-  }
-  return expulsion*100000;
-}
 
 void SpecificWorker::ponerBrazo(const std::vector< std::pair<std::string, float> > & listaPose)
 {
