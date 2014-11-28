@@ -130,6 +130,9 @@ void SpecificWorker::compute( )
     case STATE::O:
         orientar();
       break;
+	case STATE::OM:
+		orientarMarca();
+		break;
     case STATE::CC:
        cogerCaja();
        break;
@@ -224,7 +227,8 @@ bool SpecificWorker::rotar()
       marencontrada=true;
     }
     else{
-      S=STATE::O; 
+			S=STATE::O; 
+     
     }
     
     return true;
@@ -243,7 +247,13 @@ void SpecificWorker::parar()
     S=STATE::AM;
   }
   if(enmarca==true && marencontrada==false){
-    S=STATE::O;
+	  if(numMarca<10){
+		  S=STATE::OM; 
+			
+		}else{
+			S=STATE::O;
+		}
+    
   }
   
 }
@@ -281,18 +291,16 @@ bool SpecificWorker::avanzarMarca()
 			QVec punto(3);
 			punto[0]=0;
 			punto[1]=0;
-			punto[2]=600;
+			punto[2]=800;
 	  }
 	  
       addTransformInnerModel("marca-desde-camara", "camera", t.getPose());
       memory = inner->transform("world", punto, "marca-desde-camara");
       imagine= inner->transform("camera", punto, "marca-desde-camara");
-      //imagine.print("PUNTO VISTO DESDE LA CAMARA IF");
     }   
     else
     {
       imagine = inner->transform("camera", memory, "world");
-      //imagine.print("PUNTO VISTO DESDE LA CAMARA ELSE");
      }
      
      QVec fuerzas = fuerzasRepulsion();
@@ -317,8 +325,8 @@ void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
       if(velocidad <50){
 	  velocidad=50;
       }
-      if(velocidad >200){
-	 velocidad=200;
+      if(velocidad >150){
+	 velocidad=150;
       }
       
      if (target.z() < 50)
@@ -348,10 +356,11 @@ QVec SpecificWorker::fuerzasRepulsion()
       {
 	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
 	float mod = fuerza.norm2();
-	if (i.dist > 250 && i.dist < 800){
+	//i.dist > 250 && 
+	if (i.dist < 600){
 	  expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
-	  if (i.dist < 580)
-		  expulsion= expulsion/ (float)1.5;
+	  //if (i.dist < 400)
+		//  expulsion= expulsion/ (float)1.5;
 	}
 	
       }
@@ -379,18 +388,10 @@ void SpecificWorker::orientar()
 	  rotando=true;
 	}
       }
-  qDebug()<< "NUMERO MARCA ORIENTAR" << numMarca;
   differentialrobot_proxy->setSpeedBase(0,angulochoque);
-  //CAMBIAR EL METODO PARA QUE VAYA A OTRO QUE NO SEA ORIENTAR FALLA EL TAGSLOCAL QUE TENEMOS QUE PONER EL 0 NO EL 1
   if(tagslocal1.existsId(numMarca,t) )
   {
-   // qDebug()<< "TX" << t.tx;
-	  qDebug()<< "NUMERO MARCA ORIENTAR" << numMarca;
-	  if(numMarca<10){
-		 differentialrobot_proxy->setSpeedBase(0,0);
-		 S=STATE::SC;
-	  }
-	  else{
+	 
 		if(t.tx<70 && t.tx>-70){
 		differentialrobot_proxy->setSpeedBase(0,0);
 		enmarca=false;
@@ -398,12 +399,41 @@ void SpecificWorker::orientar()
 		//S=STATE::IDLE;
 			S=STATE::CC;
 		}
-	  }
     
   }
   
 }
 
+
+void SpecificWorker::orientarMarca()
+{
+
+	qDebug()<<__FUNCTION__;
+     tag t;
+      if(rotando==false){
+	if (angulochoque <0){
+	   angulochoque = 0.2;
+	   rotando=true;
+	}
+	else{
+	  angulochoque=-0.2;
+	  rotando=true;
+	}
+      }
+      
+  qDebug()<< "NUMERO MARCA ORIENTAR" << numMarca;
+  differentialrobot_proxy->setSpeedBase(0,angulochoque);
+  //CAMBIAR EL METODO PARA QUE VAYA A OTRO QUE NO SEA ORIENTAR FALLA EL TAGSLOCAL QUE TENEMOS QUE PONER EL 0 NO EL 1
+  if(tagslocal0.existsId(numMarca,t) )
+  {
+	  
+		 differentialrobot_proxy->setSpeedBase(0,0);
+		 ponerBrazo(poseCaja);
+		 sleep(2);
+		 S=STATE::SC;
+  }
+  
+}
 
 
 void SpecificWorker::cogerCaja()
@@ -435,7 +465,7 @@ void SpecificWorker::cogerCaja()
     else
     {      
 	  if(fabs(t.rz)!=0){
-		   qDebug() << "Regulando Angulo";
+		   qDebug() << "Ajustando el giro";
 		MotorGoalPosition posicion;
 		try 
 		{
@@ -444,54 +474,71 @@ void SpecificWorker::cogerCaja()
 			posicion.maxSpeed = 1.f;
 			jointmotor_proxy->setPosition(posicion);
 			sleep(1);
-			  S=STATE::BB; 
+			//S=STATE::BB;
+			//NOS VA MAL LAS FUERZAS POR ESO TENGO COMENTADO QUE VAYA A BAJAR CAJA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			//SI SE DESCOMENTA TODO VA BIEN PERO ALGUNA VEZ ENCONTRARA LA CAJA BIEN OTRAS NO!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			S=STATE::IDLE;
 		}catch(Ice::Exception &ex){std::cout << ex << std::cout;}
 	  }
     }
   }
 }
 
+
 void SpecificWorker::soltarCaja()
 {
-
-  qDebug()<<__FUNCTION__;
-  tag t;
-  if(tagslocal1.existsId(numMarca,t) )
-  {
-	try{
+	 qDebug()<<__FUNCTION__;
+	 tag t;
+	 //TRANSFORMACION PORQUE COMO NO VE LA CAJA CON EL TAGS NO SE PUEDE
+	 //ENTONCES TRANSFORMAMOS DEL BRAZO QUE ES EL PUNTO DONDE ESTA LA CAJA COGIDA
+	 vectorSuelo = inner->transform("world", "arm_right_7");
+	 //if(tagslocal1.existsId(numMarca,t) )
+	//{	
+	    try{
 		Axis ax;
 		ax.x= 0; 
 		ax.y= 0;
 		ax.z= 1;
-		bodyinversekinematics_proxy->advanceAlongAxis("ARM", ax, t.tz-60);
-		sleep(1);
-		ponerBrazo(soltando);
-		pasarCajaASuelo();
-	}
-	catch( const Ice::Exception &ex)
-	{std::cout << ex << std::endl;}
-	qDebug() << "Dejo la caja";
+		qDebug() << "Bajando Brazo Para soltar Caja";
+		//VECTORSUELO[1] por que queremos bajar el brazo
+		bodyinversekinematics_proxy->advanceAlongAxis("ARM", ax, vectorSuelo[1]-80);
+		sleep(2);
+		}
+		catch( const Ice::Exception &ex){std::cout << ex << std::endl;}
+	//}
+	ponerBrazo(soltando);
+	sleep(1);
+	pasarCajaASuelo();
+	qDebug() << "Caja Soltada";
 	sleep(2);
-	S = STATE::IDLE;
-  }
+	ponerBrazo(poseChepa);
+	sleep(2);
+	//SI QUEREMOS QUE PARE SEGUN LA SUELTE PERO BUSCAMOS OTRA CAJA Y LUEGO YA PARAMOS EL VIDEO CUANDO COMIENCE A BUSCARLA
+	//S = STATE::IDLE;
+	numMarca=11;
+	S = STATE::IR;
+  
 }
 
 
+	
 void SpecificWorker::bajarBrazo()
 {
-	//moverBrazo(0,0,1,(datosMarcaBrazo.getPos()[2]-200));
 	 qDebug()<<__FUNCTION__;
 	 tag t;
 	 if(tagslocal1.existsId(numMarca,t) )
-	{	
-		Axis ax;
+	 {	
+		try{
+	    Axis ax;
 		ax.x= 0; 
 		ax.y= 0;
 		ax.z= 1;
-		qDebug() << "enviado al brazo en Z";
+		qDebug() << "Bajando el brazo";
 		bodyinversekinematics_proxy->advanceAlongAxis("ARM", ax, t.tz-200);
 		sleep(2);
 		S=STATE::AC;
+		}
+		catch( const Ice::Exception &ex){std::cout << ex << std::endl;}
 	}
 }
 
@@ -549,7 +596,7 @@ void SpecificWorker::pasarCajaASuelo()
         string cajaCogidaString = cajaCogida.toStdString();
         innermodelmanager_proxy->removeNode(cajaCogidaString);
         Pose3D posCaja;
-		QVec vectorSuelo = inner->transform("floor","C10");
+		//vectorSuelo = inner->transform("floor","C10");
         posCaja.x = vectorSuelo[0]; posCaja.y = 50; posCaja.z = vectorSuelo[2]; posCaja.rx = 0; posCaja.ry = 0; posCaja.rz = 0;
         innermodelmanager_proxy->addTransform(cajaCogidaString, "static", "world", posCaja);
         Plane3D planoCaja;
@@ -594,7 +641,6 @@ void SpecificWorker::ponerBrazo(const std::vector< std::pair<std::string, float>
   catch(const Ice::Exception &ex)
   { std::cout << ex << std::endl;}
 }
-
 
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)

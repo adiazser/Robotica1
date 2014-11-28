@@ -32,7 +32,7 @@ class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
 
-enum class STATE {CC, R, IR, P, AM, O, BB, AC, SC ,IDLE};
+enum class STATE {CC, R, IR, P, AM, O, BB, AC, SC, OM ,IDLE};
 //enum class STATE {CC, C, R,IR, P, AM, O, IDLE};
 STATE S;
 QTime T;
@@ -44,6 +44,7 @@ bool enmarca=false;
 int numMarca;
 QVec marca;
 QVec prm;
+QVec vectorSuelo;
 TBaseState basestate;
 InnerModel *inner;
 float angulochoque;
@@ -119,6 +120,7 @@ private:
 	void parar();
 	bool avanzarMarca();
 	void orientar();
+	void orientarMarca();
 	void controlador(const QVec& resultante, const QVec& target);
 	void addTransformInnerModel(const QString &name, const QString &parent, const QVec &pose6D);
 	
