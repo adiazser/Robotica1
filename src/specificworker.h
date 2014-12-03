@@ -42,6 +42,7 @@ bool marencontrada=false;
 bool puntoencontrado=false;
 bool enmarca=false;
 int numMarca;
+int marcaMano;
 QVec marca;
 QVec prm;
 QVec vectorSuelo;
@@ -115,13 +116,13 @@ tagslocalT tagslocal0, tagslocal1;
 private:
 	bool chocar();
 	bool rotar();
-	QVec fuerzasRepulsion();
+	QVec fuerzasRepulsion(const QVec & objectivo);
 	void iniciarrotar();
 	void parar();
 	bool avanzarMarca();
 	void orientar();
 	void orientarMarca();
-	void controlador(const QVec& resultante, const QVec& target);
+	bool controlador(const QVec& resultante, const QVec& target);
 	void addTransformInnerModel(const QString &name, const QString &parent, const QVec &pose6D);
 	
 	typedef std::pair<std::string, float> Tp;

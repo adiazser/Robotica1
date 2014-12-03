@@ -49,6 +49,6 @@ qdbus org.kde.yakuake /yakuake/tabs org.kde.yakuake.setTabTitle $sess 'lokiArm'
 qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.addSession
 sess=`qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.activeSessionId`
 qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.runCommand 'cd /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/bin'
-qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.runCommand './navegacioncomp --Ice.Config=../etc/generic_config,../etc/specific_config'
+qdbus org.kde.yakuake /yakuake/sessions org.kde.yakuake.runCommand './navegacioncomp --Ice.Config=config'
 qdbus org.kde.yakuake /yakuake/tabs org.kde.yakuake.setTabTitle $sess 'navegacion'
 

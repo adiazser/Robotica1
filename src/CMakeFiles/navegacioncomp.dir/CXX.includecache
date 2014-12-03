@@ -173,6 +173,10 @@ gsl/gsl_rng.h
 -
 gsl/gsl_randist.h
 -
+boost/python.hpp
+-
+boost/python/list.hpp
+-
 qvec.h
 /opt/robocomp/include/qmat/qvec.h
 
@@ -200,6 +204,10 @@ vector
 limits
 -
 qmat/qmat.h
+-
+boost/python.hpp
+-
+boost/python/list.hpp
 -
 
 /usr/include/qt4/Qt3Support/q3cstring.h

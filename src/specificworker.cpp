@@ -219,11 +219,13 @@ void SpecificWorker::iniciarrotar()
 
 bool SpecificWorker::rotar()
 {
+  qDebug()<<__FUNCTION__;
   tag t;
   if(tagslocal0.existsId(numMarca,t))
   {
     S=STATE::P;
     if(enmarca==false){
+		qDebug()<<"CAMBIO EN MARCA";
       marencontrada=true;
     }
     else{
@@ -243,6 +245,7 @@ void SpecificWorker::parar()
   differentialrobot_proxy->setSpeedBase(0,0);
   if(numMarca>=10)
 	 ponerBrazo( poseCoger );
+     sleep(2);
   if(marencontrada==true){
     S=STATE::AM;
   }
@@ -280,18 +283,12 @@ bool SpecificWorker::avanzarMarca()
   }
   else if(tagslocal0.existsId(numMarca,t) )
   {
-	   QVec punto(3);
-	  if(numMarca>=10){
-      QVec punto(3);
+	  QVec punto(3);
       punto[0]=0;
       punto[1]=0;
-      punto[2]=0;
-	  }
-	  else{
-			QVec punto(3);
-			punto[0]=0;
-			punto[1]=0;
-			punto[2]=800;
+      punto[2]=605;
+	  if(numMarca<10){
+		punto[2]=0;  
 	  }
 	  
       addTransformInnerModel("marca-desde-camara", "camera", t.getPose());
@@ -303,7 +300,7 @@ bool SpecificWorker::avanzarMarca()
       imagine = inner->transform("camera", memory, "world");
      }
      
-     QVec fuerzas = fuerzasRepulsion();
+     QVec fuerzas = fuerzasRepulsion(imagine);
      QVec resultante = fuerzas + QVec::vec2(imagine.x(),imagine.z());
      controlador(resultante, imagine);
      
@@ -311,38 +308,62 @@ bool SpecificWorker::avanzarMarca()
     return true;
  }
  
-void SpecificWorker::controlador(const QVec &resultante, const QVec &target)
+bool SpecificWorker::controlador(const QVec &resultante, const QVec &target)
 {
       qDebug()<<__FUNCTION__;
       
       float angulo = atan2(resultante.x(),resultante.y());
-      if (angulo>0.7){
-	angulo=0.7;
-      }else if (angulo< -0.7)
-	angulo =-0.7;
+	  if(target.z()<800){
+		  angulo=0;
+	  }
+	  else{
+		if (angulo>0.4){
+			angulo=0.4;
+		}else if (angulo< -0.4)
+			angulo =-0.4;
+	  }
       angulochoque=angulo;
       float velocidad=0.2*resultante.norm2();
-      if(velocidad <50){
-	  velocidad=50;
-      }
+	  
       if(velocidad >150){
-	 velocidad=150;
+		  if(target.z()<1000){
+			  velocidad=50;
+		  }
+		  if(target.z()<500){
+			  velocidad=0;  
+		  }
+		  else
+			velocidad=150;
       }
       
-     if (target.z() < 50)
-      {
-	S=STATE::P;
-	marencontrada=false;
-	enmarca=true;
-      } 
+       qDebug()<<"target z"<< target.z();
+	   if(numMarca>=10){
+			if (target.z() < 70)
+			{
+		 
+				S=STATE::P;
+				marencontrada=false;
+				enmarca=true;
+			} 
+	   }
+	   else{
+		    qDebug()<<"target z marca 3"<< target.z();
+		   if(target.z()<1000){
+		   
+			   S=STATE::P;
+			marencontrada=false;
+			enmarca=true;
+		}
+	}
       
        try{
  	differentialrobot_proxy->setSpeedBase(velocidad,angulo);
        }catch(const Ice::Exception &e){	  std::cout<<e<<std::endl;   } 
-
+       
+  return true;
 }
 
-QVec SpecificWorker::fuerzasRepulsion()
+QVec SpecificWorker::fuerzasRepulsion(const QVec & objectivo)
 {
 
   //qDebug()<<__FUNCTION__;
@@ -356,16 +377,16 @@ QVec SpecificWorker::fuerzasRepulsion()
       {
 	fuerza = QVec::vec2(-sin(i.angle) * i.dist, -cos(i.angle) * i.dist);
 	float mod = fuerza.norm2();
-	//i.dist > 250 && 
-	if (i.dist < 600){
-	  expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
-	  //if (i.dist < 400)
-		//  expulsion= expulsion/ (float)1.5;
+	if(objectivo.norm2()>700){
+		if (i.dist < 550){
+			expulsion = expulsion + (fuerza.normalize() * (float)(1.0/(mod))); 
+		}
+	}
+	
+	
 	}
 	
       }
-    }
-    
   }catch(const Ice::Exception &e){
       std::cout<<e<<std::endl;
   }
@@ -377,7 +398,6 @@ void SpecificWorker::orientar()
 
   qDebug()<<__FUNCTION__;
   tag t;
-  qDebug()<< "HOLA";
       if(rotando==false){
 	if (angulochoque <0){
 	   angulochoque = 0.2;
@@ -391,13 +411,12 @@ void SpecificWorker::orientar()
   differentialrobot_proxy->setSpeedBase(0,angulochoque);
   if(tagslocal1.existsId(numMarca,t) )
   {
-	 
-		if(t.tx<70 && t.tx>-70){
+	 qDebug()<<"punto t.tx orientar"<< t.tx;
+		if(t.tx<100 && t.tx>-100){
 		differentialrobot_proxy->setSpeedBase(0,0);
 		enmarca=false;
 		rotando=false;
-		//S=STATE::IDLE;
-			S=STATE::CC;
+		S=STATE::CC;
 		}
     
   }
@@ -440,7 +459,7 @@ void SpecificWorker::cogerCaja()
 {
   qDebug()<<__FUNCTION__;
   tag t;
-  if(tagslocal1.existsId(10,t) )
+  if(tagslocal1.existsId(numMarca,t) )
   {
     
     if(fabs(t.tx)>10){
@@ -474,10 +493,10 @@ void SpecificWorker::cogerCaja()
 			posicion.maxSpeed = 1.f;
 			jointmotor_proxy->setPosition(posicion);
 			sleep(1);
-			//S=STATE::BB;
+			S=STATE::BB;
 			//NOS VA MAL LAS FUERZAS POR ESO TENGO COMENTADO QUE VAYA A BAJAR CAJA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			//SI SE DESCOMENTA TODO VA BIEN PERO ALGUNA VEZ ENCONTRARA LA CAJA BIEN OTRAS NO!!!!!!!!!!!!!!!!!!!!!!!!!!!
-			S=STATE::IDLE;
+			//S=STATE::IDLE;
 		}catch(Ice::Exception &ex){std::cout << ex << std::cout;}
 	  }
     }
@@ -516,6 +535,8 @@ void SpecificWorker::soltarCaja()
 	//SI QUEREMOS QUE PARE SEGUN LA SUELTE PERO BUSCAMOS OTRA CAJA Y LUEGO YA PARAMOS EL VIDEO CUANDO COMIENCE A BUSCARLA
 	//S = STATE::IDLE;
 	numMarca=11;
+	enmarca=false;
+	marencontrada=false;
 	S = STATE::IR;
   
 }
@@ -558,7 +579,9 @@ void SpecificWorker::agarrarCaja()
 	sleep(2);
 	ponerBrazo( poseChepa );
 	sleep(2);
+	marcaMano=numMarca;
 	numMarca=3;
+	
 	S = STATE::IR;
 	
 }
@@ -567,7 +590,7 @@ void SpecificWorker::agarrarCaja()
 void SpecificWorker::pasarCajaAMano()
 {
     try{
-        QString marca = "C" + QString::number(10,10);
+        QString marca = "C" + QString::number(numMarca,10);
         string marcaString = marca.toStdString();
         innermodelmanager_proxy->removeNode(marcaString);
         Pose3D posCaja;
@@ -576,7 +599,7 @@ void SpecificWorker::pasarCajaAMano()
         Plane3D planoCaja;
         planoCaja.px = 0; planoCaja.py = 0; planoCaja.pz = 0; planoCaja.nx = 0; planoCaja.ny = 0; planoCaja.nz = 0;
         planoCaja.width = 100; planoCaja.height =100; planoCaja.thickness = 100;
-        QString textura = "/home/robocomp/robocomp/files/innermodel/tar36h11-"+QString::number(10,10)+".png";
+        QString textura = "/home/robocomp/robocomp/files/innermodel/tar36h11-"+QString::number(numMarca,10)+".png";
         string texturaString = textura.toStdString();
         planoCaja.texture = texturaString;
         QString marcaPlano = "Plano" + marca;
@@ -592,7 +615,7 @@ void SpecificWorker::pasarCajaAMano()
 void SpecificWorker::pasarCajaASuelo()
 {
     try{
-        QString cajaCogida = "C" + QString::number(10,10);
+        QString cajaCogida = "C" + QString::number(marcaMano,10);
         string cajaCogidaString = cajaCogida.toStdString();
         innermodelmanager_proxy->removeNode(cajaCogidaString);
         Pose3D posCaja;
@@ -602,7 +625,7 @@ void SpecificWorker::pasarCajaASuelo()
         Plane3D planoCaja;
         planoCaja.px = 0; planoCaja.py = 0; planoCaja.pz = 0; planoCaja.nx = 0; planoCaja.ny = 0; planoCaja.nz = 0;
         planoCaja.width = 100; planoCaja.height =100; planoCaja.thickness = 100;
-        QString textura = "/home/robocomp/robocomp/files/innermodel/tar36h11-"+QString::number(10,10)+".png";
+        QString textura = "/home/robocomp/robocomp/files/innermodel/tar36h11-"+QString::number(marcaMano,10)+".png";
         string texturaString = textura.toStdString();
         planoCaja.texture = texturaString;
         QString cajaCogidaPlano = "Plano" + cajaCogida;

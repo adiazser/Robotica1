@@ -456,6 +456,7 @@ src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o
  src/JointMotor.h
  src/Laser.h
  src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/config.h
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.cpp
@@ -888,6 +889,8 @@ src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o
  src/InnerModelManager.h
  src/JointMotor.h
  src/Laser.h
+ src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/config.h
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericworker.cpp
@@ -1319,6 +1322,8 @@ src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o
  src/InnerModelManager.h
  src/JointMotor.h
  src/Laser.h
+ src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o
  /home/robocomp/robocomp/classes/qlog/qlog.cpp
  /home/robocomp/robocomp/classes/qlog/qlog.h
@@ -2102,6 +2107,7 @@ src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o
  src/JointMotor.h
  src/Laser.h
  src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/config.h
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.h
@@ -2534,6 +2540,8 @@ src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o
  src/InnerModelManager.h
  src/JointMotor.h
  src/Laser.h
+ src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/config.h
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericworker.h
@@ -2965,6 +2973,8 @@ src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o
  src/InnerModelManager.h
  src/JointMotor.h
  src/Laser.h
+ src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/config.h
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/genericmonitor.h
@@ -3398,6 +3408,8 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o
  src/InnerModelManager.h
  src/JointMotor.h
  src/Laser.h
+ src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/moc_specificworker.cxx
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h
@@ -4731,6 +4743,8 @@ src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o
  src/InnerModelManager.h
  src/JointMotor.h
  src/Laser.h
+ src/config.h
+ src/genericworker.h
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.cpp
  /home/robocomp/robocomp/components/grupo1alexjaime/navegacion/src/specificworker.h

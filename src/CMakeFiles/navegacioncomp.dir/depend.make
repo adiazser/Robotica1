@@ -455,6 +455,7 @@ src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o: src/Laser.h
 src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/commonbehaviorI.cpp.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/config.h
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/genericmonitor.cpp
@@ -887,6 +888,8 @@ src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/Laser.h
+src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/genericmonitor.cpp.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/config.h
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/genericworker.cpp
@@ -1318,6 +1321,8 @@ src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/Laser.h
+src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/genericworker.cpp.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o: /home/robocomp/robocomp/classes/qlog/qlog.cpp
 src/CMakeFiles/navegacioncomp.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o: /home/robocomp/robocomp/classes/qlog/qlog.h
@@ -2101,6 +2106,7 @@ src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o: src/InnerModelManag
 src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o: src/Laser.h
 src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/moc_commonbehaviorI.cxx.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/config.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/genericmonitor.h
@@ -2533,6 +2539,8 @@ src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/GetAprilTags.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/Laser.h
+src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/moc_genericmonitor.cxx.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/config.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/genericworker.h
@@ -2964,6 +2972,8 @@ src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/GetAprilTags.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/Laser.h
+src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/moc_genericworker.cxx.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/config.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/genericmonitor.h
@@ -3397,6 +3407,8 @@ src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/GetAprilTags.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/Laser.h
+src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/moc_specificmonitor.cxx.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: src/moc_specificworker.cxx
 src/CMakeFiles/navegacioncomp.dir/moc_specificworker.cxx.o: src/specificworker.h
@@ -4730,6 +4742,8 @@ src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/InnerModelManager.h
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/JointMotor.h
 src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/Laser.h
+src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/config.h
+src/CMakeFiles/navegacioncomp.dir/specificmonitor.cpp.o: src/genericworker.h
 
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: src/specificworker.cpp
 src/CMakeFiles/navegacioncomp.dir/specificworker.cpp.o: src/specificworker.h
