@@ -31,11 +31,17 @@ SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mp
   S=STATE::IR;
   inner = new InnerModel("/home/salabeta/robocomp/files/innermodel/betaWorld.xml");
   T.restart();
-  numMarca=10;
+  
+  vectorCajas[0]=10;
+  vectorCajas[1]=11;
+  vectorCajas[2]=23;
+  numMarca=vectorCajas[icajas];
   
   poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_1", 0));
-  poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_2", -0.7));
-  poseCoger.push_back(std::make_pair<std::string,float>("elbow_right", 1)); 
+  //poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_2", -0.7));
+ // poseCoger.push_back(std::make_pair<std::string,float>("elbow_right", 1)); 
+  poseCoger.push_back(std::make_pair<std::string,float>("shoulder_right_2", -0.9));
+  poseCoger.push_back(std::make_pair<std::string,float>("elbow_right", 1.05)); 
   poseCoger.push_back(std::make_pair<std::string,float>("wrist_right_giro", 0));
   poseCoger.push_back(std::make_pair<std::string,float>("wrist_right_2", 1.1));
   poseCoger.push_back(std::make_pair<std::string,float>("finger_right_1", 0.0));
@@ -55,14 +61,13 @@ SpecificWorker::SpecificWorker(MapPrx& mprx, QObject *parent) : GenericWorker(mp
   poseChepa.push_back(std::make_pair<std::string, float>("wrist_right_giro", 0));
   
   
-	soltando.push_back(std::make_pair<std::string, float>("finger_right_1", 0));
-	soltando.push_back(std::make_pair<std::string, float>("finger_right_2", 0));
+  soltando.push_back(std::make_pair<std::string, float>("finger_right_1", 0));
+  soltando.push_back(std::make_pair<std::string, float>("finger_right_2", 0));
   
   
   ponerBrazo( poseChepa );
   timer.start(Period);
   
-  //S=STATE::IDLE;
 }
 
 /**
@@ -76,8 +81,7 @@ SpecificWorker::~SpecificWorker()
 
 void SpecificWorker::compute( )
 { 
-  static QTime reloj= QTime::currentTime();
-  static QTime reloj2= QTime::currentTime();
+	
   try
   {
     differentialrobot_proxy->getBaseState(basestate);
@@ -90,23 +94,10 @@ void SpecificWorker::compute( )
   try
   {
     tagslocal0.update(getapriltags0_proxy->checkMarcas());
-    //tagslocal0.print();
     tagslocal1.update(getapriltags1_proxy->checkMarcas());    
-    //tagslocal1.print();
   }
   catch(const Ice::Exception &e){std::cout<< "error en april " <<e<<std::endl; }
   
-  /* try
-  {
-    RoboCompJointMotor::MotorStateMap motorMap;
-    jointmotor_proxy->getAllMotorState(motorMap);
-  }
-  catch(const Ice::Exception &e){	  std::cout<<e<<std::endl; }
-  */
-  
-//   readBaseState();
-//   readTags();
-//   readArmState();
   
   switch(S){
    /* case STATE::C:
@@ -123,9 +114,7 @@ void SpecificWorker::compute( )
         parar();
       break;
     case STATE::AM:
-        reloj2.restart();
         avanzarMarca();
-	 qDebug()<< "Reloj AVANZAR" << reloj2.restart();
       break;
     case STATE::O:
         orientar();
@@ -148,7 +137,6 @@ void SpecificWorker::compute( )
     case STATE::IDLE:
       break;
   }
-  qDebug()<< reloj.restart();
   
 }
 
@@ -225,12 +213,11 @@ bool SpecificWorker::rotar()
   {
     S=STATE::P;
     if(enmarca==false){
-		qDebug()<<"CAMBIO EN MARCA";
+	  qDebug()<<"CAMBIO A MARCA "<< numMarca;
       marencontrada=true;
     }
     else{
 			S=STATE::O; 
-     
     }
     
     return true;
@@ -256,7 +243,6 @@ void SpecificWorker::parar()
 		}else{
 			S=STATE::O;
 		}
-    
   }
   
 }
@@ -273,27 +259,27 @@ bool SpecificWorker::avanzarMarca()
     	S=STATE::P;
 	marencontrada=false;
 	enmarca=true;
-    return true;
+    differentialrobot_proxy->setSpeedBase(0,0);
+	return true;
   }
   else if(tagslocal1.existsId(numMarca, t)){
     	S=STATE::P;
 	marencontrada=false;
 	enmarca=true;
-    return true;
+    differentialrobot_proxy->setSpeedBase(0,0);
+	return true;
   }
   else if(tagslocal0.existsId(numMarca,t) )
   {
+	  qDebug()<<"MARCAA "<< t.id;
 	  QVec punto(3);
       punto[0]=0;
       punto[1]=0;
-      punto[2]=605;
-	  if(numMarca<10){
-		punto[2]=0;  
-	  }
+	  punto[2]=0;
 	  
       addTransformInnerModel("marca-desde-camara", "camera", t.getPose());
       memory = inner->transform("world", punto, "marca-desde-camara");
-      imagine= inner->transform("camera", punto, "marca-desde-camara");
+      imagine= inner->transform("camera", memory, "world");
     }   
     else
     {
@@ -301,8 +287,7 @@ bool SpecificWorker::avanzarMarca()
      }
      
      QVec fuerzas = fuerzasRepulsion(imagine);
-     QVec resultante = fuerzas + QVec::vec2(imagine.x(),imagine.z());
-     controlador(resultante, imagine);
+     controlador(fuerzas, imagine);
      
     
     return true;
@@ -313,15 +298,11 @@ bool SpecificWorker::controlador(const QVec &resultante, const QVec &target)
       qDebug()<<__FUNCTION__;
       
       float angulo = atan2(resultante.x(),resultante.y());
-	  if(target.z()<800){
-		  angulo=0;
-	  }
-	  else{
+	  
 		if (angulo>0.4){
 			angulo=0.4;
 		}else if (angulo< -0.4)
 			angulo =-0.4;
-	  }
       angulochoque=angulo;
       float velocidad=0.2*resultante.norm2();
 	  
@@ -335,24 +316,25 @@ bool SpecificWorker::controlador(const QVec &resultante, const QVec &target)
 		  else
 			velocidad=150;
       }
-      
-       qDebug()<<"target z"<< target.z();
 	   if(numMarca>=10){
-			if (target.z() < 70)
+			if (fabs(target.z()) < 650)
 			{
 		 
 				S=STATE::P;
 				marencontrada=false;
 				enmarca=true;
+				differentialrobot_proxy->setSpeedBase(0,0);
+				return true;
 			} 
 	   }
 	   else{
-		    qDebug()<<"target z marca 3"<< target.z();
-		   if(target.z()<1000){
+		   if(fabs(target.z())<800){
 		   
 			   S=STATE::P;
 			marencontrada=false;
 			enmarca=true;
+			differentialrobot_proxy->setSpeedBase(0,0);
+			return true;
 		}
 	}
       
@@ -365,8 +347,7 @@ bool SpecificWorker::controlador(const QVec &resultante, const QVec &target)
 
 QVec SpecificWorker::fuerzasRepulsion(const QVec & objectivo)
 {
-
-  //qDebug()<<__FUNCTION__;
+	
   QVec fuerza;
   QVec expulsion = QVec::zeros(2);
   try{
@@ -390,7 +371,11 @@ QVec SpecificWorker::fuerzasRepulsion(const QVec & objectivo)
   }catch(const Ice::Exception &e){
       std::cout<<e<<std::endl;
   }
-  return expulsion*100000;
+  expulsion=expulsion*100000;
+  
+  QVec resultante = expulsion + QVec::vec2(objectivo.x(),objectivo.z());
+  
+  return resultante;
 }
 
 void SpecificWorker::orientar()
@@ -399,7 +384,7 @@ void SpecificWorker::orientar()
   qDebug()<<__FUNCTION__;
   tag t;
       if(rotando==false){
-	if (angulochoque <0){
+	if (angulochoque < 0){
 	   angulochoque = 0.2;
 	   rotando=true;
 	}
@@ -411,8 +396,7 @@ void SpecificWorker::orientar()
   differentialrobot_proxy->setSpeedBase(0,angulochoque);
   if(tagslocal1.existsId(numMarca,t) )
   {
-	 qDebug()<<"punto t.tx orientar"<< t.tx;
-		if(t.tx<100 && t.tx>-100){
+		if(fabs(t.tx)<130){
 		differentialrobot_proxy->setSpeedBase(0,0);
 		enmarca=false;
 		rotando=false;
@@ -442,7 +426,6 @@ void SpecificWorker::orientarMarca()
       
   qDebug()<< "NUMERO MARCA ORIENTAR" << numMarca;
   differentialrobot_proxy->setSpeedBase(0,angulochoque);
-  //CAMBIAR EL METODO PARA QUE VAYA A OTRO QUE NO SEA ORIENTAR FALLA EL TAGSLOCAL QUE TENEMOS QUE PONER EL 0 NO EL 1
   if(tagslocal0.existsId(numMarca,t) )
   {
 	  
@@ -511,8 +494,6 @@ void SpecificWorker::soltarCaja()
 	 //TRANSFORMACION PORQUE COMO NO VE LA CAJA CON EL TAGS NO SE PUEDE
 	 //ENTONCES TRANSFORMAMOS DEL BRAZO QUE ES EL PUNTO DONDE ESTA LA CAJA COGIDA
 	 vectorSuelo = inner->transform("world", "arm_right_7");
-	 //if(tagslocal1.existsId(numMarca,t) )
-	//{	
 	    try{
 		Axis ax;
 		ax.x= 0; 
@@ -524,7 +505,7 @@ void SpecificWorker::soltarCaja()
 		sleep(2);
 		}
 		catch( const Ice::Exception &ex){std::cout << ex << std::endl;}
-	//}
+		
 	ponerBrazo(soltando);
 	sleep(1);
 	pasarCajaASuelo();
@@ -532,13 +513,18 @@ void SpecificWorker::soltarCaja()
 	sleep(2);
 	ponerBrazo(poseChepa);
 	sleep(2);
-	//SI QUEREMOS QUE PARE SEGUN LA SUELTE PERO BUSCAMOS OTRA CAJA Y LUEGO YA PARAMOS EL VIDEO CUANDO COMIENCE A BUSCARLA
-	//S = STATE::IDLE;
-	numMarca=11;
-	enmarca=false;
-	marencontrada=false;
-	S = STATE::IR;
-  
+	icajas++;
+	numMarca=vectorCajas[icajas];
+	if(icajas>2){
+		S = STATE::IDLE;
+		qDebug()<<"FINISH";
+		
+	}
+	else{
+		enmarca=false;
+		marencontrada=false;
+		S = STATE::IR;
+	}
 }
 
 
@@ -580,8 +566,8 @@ void SpecificWorker::agarrarCaja()
 	ponerBrazo( poseChepa );
 	sleep(2);
 	marcaMano=numMarca;
+	//MARCA DE LA PARED A LA QUE LO QUEREMOS LLEVAR	
 	numMarca=3;
-	
 	S = STATE::IR;
 	
 }
@@ -619,7 +605,6 @@ void SpecificWorker::pasarCajaASuelo()
         string cajaCogidaString = cajaCogida.toStdString();
         innermodelmanager_proxy->removeNode(cajaCogidaString);
         Pose3D posCaja;
-		//vectorSuelo = inner->transform("floor","C10");
         posCaja.x = vectorSuelo[0]; posCaja.y = 50; posCaja.z = vectorSuelo[2]; posCaja.rx = 0; posCaja.ry = 0; posCaja.rz = 0;
         innermodelmanager_proxy->addTransform(cajaCogidaString, "static", "world", posCaja);
         Plane3D planoCaja;
@@ -668,7 +653,6 @@ void SpecificWorker::ponerBrazo(const std::vector< std::pair<std::string, float>
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-	
 	return true;
 };
  

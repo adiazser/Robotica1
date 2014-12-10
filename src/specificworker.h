@@ -46,6 +46,8 @@ int marcaMano;
 QVec marca;
 QVec prm;
 QVec vectorSuelo;
+int vectorCajas[3];
+int icajas=0;
 TBaseState basestate;
 InnerModel *inner;
 float angulochoque;
