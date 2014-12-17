@@ -121,6 +121,8 @@ qmat/QMatAll
 -
 innermodel/innermodel.h
 -
+qt4/QtCore/qlist.h
+-
 
 /home/salabeta/robocomp/classes/qlog/qlog.h
 QtCore

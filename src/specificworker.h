@@ -22,99 +22,111 @@
 #include <genericworker.h>
 #include <qmat/QMatAll>
 #include <innermodel/innermodel.h>
+#include <qt4/QtCore/qlist.h>
 
 /**
-       \brief
-       @author authorname
-*/
+ *       \brief
+ *       @author authorname
+ */
 
 class SpecificWorker : public GenericWorker
 {
-Q_OBJECT
-
-enum class STATE {CC, R, IR, P, AM, O, BB, AC, SC, OM ,IDLE};
-//enum class STATE {CC, C, R,IR, P, AM, O, IDLE};
-STATE S;
-QTime T;
-float intervalo;
-bool rotando=false;
-bool marencontrada=false;
-bool puntoencontrado=false;
-bool enmarca=false;
-int numMarca;
-int marcaMano;
-QVec marca;
-QVec prm;
-QVec vectorSuelo;
-int vectorCajas[3];
-int icajas=0;
-TBaseState basestate;
-InnerModel *inner;
-float angulochoque;
- TLaserData laserdata;
-
-
-struct tag
-{
-  int id;
-  float tx,ty,tz,ry,rz;	
-  tag(){};
-    tag( int id_, float tx_, float ty_, float tz_, float ry_, float rz_)
-  {
-      tx = tx_*1000; ty = ty_*1000; tz = tz_*1000; ry = ry_; id = id_; rz=rz_;
-      pose.resize(6);
-      pose[0] = tx;     pose[1] = ty;     pose[2] = tz;     pose[3] = 0;     pose[4] = ry;     pose[5] = rz;
-  }
-  QVec getPose()
-  {
-    return pose;
-  }
-  void print()
-  {
-    qDebug() << "	" << tx << ty << tz << ry;
-  }
-  QVec pose;
-};
-
-struct tagslocalT
-{
-  QMutex mutex;
-  void update( const RoboCompGetAprilTags::listaMarcas &t)
-  {
-    QMutexLocker m(&mutex);
-    tags.clear();
-    for(auto i: t)
-    {
-      tag myT(i.id, i.tx, i.ty, i.tz, i.ry, i.rz);
-      tags.push_back(myT);
-    }
-    
-  }
-
-  bool existsId(int id_, tag &tt)
-  {
-    QMutexLocker m(&mutex);
-    for(auto i: tags)
-      if( i.id == id_)
-      {
-	tt=i;
-	return true;
-      }
-    return false;
-  }
-  void print()
-  {
-    qDebug() << "---------------PRINTING TAGS--------------";
-    for(auto i: tags)
-      i.print();
-    qDebug() << "---------------END TAGS--------------";
-  }
-  std::vector<tag> tags;
-};
-
-tagslocalT tagslocal0, tagslocal1;
-
-
+	Q_OBJECT
+	
+	enum class STATE {CC, R,BC, IR, P, AM, O, BB, AC, SC, OM ,IDLE};
+	STATE S;
+	QTime T;
+	float intervalo;
+	bool rotando=false;
+	bool marencontrada=false;
+	bool puntoencontrado=false;
+	bool enmarca=false;
+	int numMarca;
+	int marcaMano;
+	QVec marca;
+	QVec prm;
+	QVec vectorSuelo;
+	QList<int> vectorCajas;
+	TBaseState basestate;
+	InnerModel *inner;
+	float angulochoque;
+	TLaserData laserdata;
+	
+	
+	struct tag
+	{
+		int id;
+		float tx,ty,tz,ry,rz;	
+		tag(){};
+		tag( int id_, float tx_, float ty_, float tz_, float ry_, float rz_)
+		{
+			tx = tx_*1000; ty = ty_*1000; tz = tz_*1000; ry = ry_; id = id_; rz=rz_;
+			pose.resize(6);
+			pose[0] = tx;     pose[1] = ty;     pose[2] = tz;     pose[3] = 0;     pose[4] = ry;     pose[5] = rz;
+		}
+		QVec getPose()
+		{
+			return pose;
+		}
+		void print()
+		{
+			qDebug() << "	" << tx << ty << tz << ry;
+		}
+		QVec pose;
+	};
+	
+	struct tagslocalT
+	{
+		QMutex mutex;
+		void update( const RoboCompGetAprilTags::listaMarcas &t)
+		{
+			QMutexLocker m(&mutex);
+			tags.clear();
+			for(auto i: t)
+			{
+				tag myT(i.id, i.tx, i.ty, i.tz, i.ry, i.rz);
+				tags.push_back(myT);
+			}
+			
+		}
+		
+		bool existsId(int id_, tag &tt)
+		{
+			QMutexLocker m(&mutex);
+			for(auto i: tags)
+				if( i.id == id_)
+				{
+					tt=i;
+					return true;
+				}
+				return false;
+		}
+		
+		bool getIdCaja(tag &tt, const QList<int> &listaCajas)
+		{
+			QMutexLocker m(&mutex);
+			for(auto i: tags)
+				if( i.id >= 10 and listaCajas.contains(i.id)==false)
+				{
+					tt=i;
+					return true;
+				}
+				return false;
+		}
+		
+		void print()
+		{
+			qDebug() << "---------------PRINTING TAGS--------------";
+			for(auto i: tags)
+				i.print();
+			qDebug() << "---------------END TAGS--------------";
+		}
+		std::vector<tag> tags;
+	};
+	
+	tagslocalT tagslocal0, tagslocal1;
+	
+	
 private:
 	bool chocar();
 	bool rotar();
@@ -124,6 +136,7 @@ private:
 	bool avanzarMarca();
 	void orientar();
 	void orientarMarca();
+	bool buscarCaja();
 	bool controlador(const QVec& resultante, const QVec& target);
 	void addTransformInnerModel(const QString &name, const QString &parent, const QVec &pose6D);
 	
@@ -146,9 +159,9 @@ public:
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 	void  newAprilTag(const RoboCompGetAprilTags::listaMarcas& tags);
-
+	
 public slots:
- 	void compute(); 	
+	void compute(); 	
 };
 
 #endif
